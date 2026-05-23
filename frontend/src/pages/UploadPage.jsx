@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
 
 function UploadPage() {
 
@@ -34,7 +35,8 @@ function UploadPage() {
     };
 
     return (
-
+        <>
+        <Navbar />
         <div style={{padding:'30px'}}>
 
             <h1>Upload Excel Question Paper</h1>
@@ -61,7 +63,7 @@ function UploadPage() {
             </button>
 
         </div>
-
+        </>
     );
 
 }

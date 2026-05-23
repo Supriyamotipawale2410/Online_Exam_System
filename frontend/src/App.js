@@ -7,6 +7,8 @@ import UploadPage from './pages/UploadPage';
 import ResultsPage from './pages/ResultsPage';
 import AdminDashboard from './pages/AdminDashboard';
 
+import ProtectedRoute from './components/ProtectedRoute';
+
 function App() {
 
     return (
@@ -22,27 +24,47 @@ function App() {
 
                 <Route
                     path="/subjects"
-                    element={<SubjectPage />}
+                    element={
+                        <ProtectedRoute role="student">
+                            <SubjectPage />
+                        </ProtectedRoute>
+                    }
                 />
 
                 <Route
                     path="/exam/:subject_id"
-                    element={<ExamPage />}
+                    element={
+                        <ProtectedRoute role="student">
+                            <ExamPage />
+                        </ProtectedRoute>
+                    }
                 />
 
                 <Route
                     path="/upload"
-                    element={<UploadPage />}
+                    element={
+                        <ProtectedRoute role="admin">
+                            <UploadPage />
+                        </ProtectedRoute>
+                    }
                 />
 
                 <Route
                     path="/results"
-                    element={<ResultsPage />}
+                    element={
+                        <ProtectedRoute role="admin">
+                            <ResultsPage />
+                        </ProtectedRoute>
+                    }
                 />
 
                 <Route
                     path="/admin-dashboard"
-                    element={<AdminDashboard />}
+                    element={
+                        <ProtectedRoute role="admin">
+                            <AdminDashboard />
+                        </ProtectedRoute>
+                    }
                 />
 
             </Routes>

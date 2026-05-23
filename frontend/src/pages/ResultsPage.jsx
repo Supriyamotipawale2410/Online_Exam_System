@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
 
 function ResultsPage() {
 
@@ -22,7 +23,8 @@ function ResultsPage() {
     }, []);
 
     return (
-
+                    <>
+            <Navbar />
         <div style={{padding:'30px'}}>
 
             <h1>Student Results</h1>
@@ -83,7 +85,7 @@ function ResultsPage() {
             </table>
 
         </div>
-
+        </>
     );
 
 }

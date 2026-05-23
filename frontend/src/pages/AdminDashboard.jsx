@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 function AdminDashboard() {
 
     return (
-
+        <>
+        <Navbar />
         <div style={{padding:'30px'}}>
 
             <h1>Admin Dashboard</h1>
@@ -38,7 +40,7 @@ function AdminDashboard() {
             </div>
 
         </div>
-
+        </>
     );
 
 }

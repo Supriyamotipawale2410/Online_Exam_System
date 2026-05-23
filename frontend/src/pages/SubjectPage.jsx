@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 function SubjectPage() {
 
@@ -37,6 +38,8 @@ function SubjectPage() {
 
     return (
 
+                <>
+        <Navbar />
         <div style={{padding:'30px'}}>
 
             <h1>Welcome {student_name}</h1>
@@ -65,7 +68,7 @@ function SubjectPage() {
             }
 
         </div>
-
+            </>
     );
 
 }
