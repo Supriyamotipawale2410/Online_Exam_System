@@ -12,6 +12,32 @@ function AdminDashboard() {
 
             <div style={{marginTop:'30px'}}>
 
+                <Link to="/upload-students">
+
+                    <button
+                        style={{
+                            padding:'15px',
+                            marginRight:'20px'
+                        }}
+                    >
+                        Upload Students
+                    </button>
+
+                </Link>
+
+                <Link to="/students">
+
+                    <button
+                        style={{
+                            padding:'15px',
+                            marginRight:'20px'
+                        }}
+                    >
+                        Manage Students
+                    </button>
+
+                </Link>
+
                 <Link to="/upload">
 
                     <button

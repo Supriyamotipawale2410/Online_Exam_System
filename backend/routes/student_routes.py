@@ -3,6 +3,47 @@ from db_config import mysql
 
 student_bp = Blueprint('student_bp', __name__)
 
+
+# =========================================
+# STUDENT LOGIN
+# =========================================
+
+@student_bp.route('/login', methods=['POST'])
+def login():
+
+    data = request.json
+
+    student_id = data['student_id']
+    student_name = data['student_name']
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("""
+        SELECT *
+        FROM students
+        WHERE student_id = %s
+        AND student_name = %s
+    """, (
+        student_id,
+        student_name
+    ))
+
+    student = cursor.fetchone()
+
+    cursor.close()
+
+    if student:
+
+        return jsonify({
+            "message": "Login Successful"
+        })
+
+    else:
+
+        return jsonify({
+            "message": "Invalid Student Credentials"
+        }), 401
+
 # =========================================
 # GET ALL SUBJECTS
 # =========================================

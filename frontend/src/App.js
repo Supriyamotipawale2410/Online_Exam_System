@@ -6,7 +6,8 @@ import ExamPage from './pages/ExamPage';
 import UploadPage from './pages/UploadPage';
 import ResultsPage from './pages/ResultsPage';
 import AdminDashboard from './pages/AdminDashboard';
-
+import UploadStudentsPage from './pages/UploadStudentsPage';
+import StudentsPage from './pages/StudentsPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -40,6 +41,23 @@ function App() {
                     }
                 />
 
+                <Route
+                    path="/students"
+                    element={
+                        <ProtectedRoute role="admin">
+                            <StudentsPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/upload-students"
+                    element={
+                        <ProtectedRoute role="admin">
+                            <UploadStudentsPage />
+                        </ProtectedRoute>
+                    }
+                />
                 <Route
                     path="/upload"
                     element={

@@ -30,11 +30,44 @@ function LoginPage() {
         }
         else {
 
-            localStorage.setItem('student_id', studentId);
-            localStorage.setItem('student_name', studentName);
-            localStorage.setItem('role', 'student');
+            fetch('http://127.0.0.1:5000/student/login', {
 
-            navigate('/subjects');
+    method:'POST',
+
+    headers:{
+        'Content-Type':'application/json'
+    },
+
+    body: JSON.stringify({
+
+        student_id: studentId,
+        student_name: studentName
+
+    })
+
+})
+.then(async(res) => {
+
+    const data = await res.json();
+
+    if(res.ok) {
+
+        localStorage.setItem('student_id', studentId);
+
+        localStorage.setItem('student_name', studentName);
+
+        localStorage.setItem('role', 'student');
+
+        navigate('/subjects');
+
+    }
+    else {
+
+        alert(data.message);
+
+    }
+
+});
 
         }
 
