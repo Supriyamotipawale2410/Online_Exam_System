@@ -43,6 +43,33 @@ def login():
         return jsonify({
             "message": "Invalid Student Credentials"
         }), 401
+    
+    # =========================================
+# GET ATTEMPTED SUBJECTS
+# =========================================
+
+@student_bp.route('/attempted-subjects/<student_id>', methods=['GET'])
+def attempted_subjects(student_id):
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("""
+        SELECT subject_id
+        FROM results
+        WHERE student_id = %s
+    """, (student_id,))
+
+    rows = cursor.fetchall()
+
+    attempted = []
+
+    for row in rows:
+
+        attempted.append(row[0])
+
+    cursor.close()
+
+    return jsonify(attempted)
 
 # =========================================
 # GET ALL SUBJECTS

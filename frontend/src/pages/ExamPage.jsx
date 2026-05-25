@@ -87,7 +87,7 @@ useEffect(() => {
 
       alert(response.data.message);
       setQuestions([]);
-      navigate('/');
+      navigate('/subjects');
 
     })
     .catch((error) => {
@@ -102,11 +102,11 @@ useEffect(() => {
         <>
     <Navbar />
 
-    <div style={{ padding: '30px' }}>
+    <div className="page-container">
 
-      <h1>Exam Page</h1>
+      <h1>Exam Page 🧠</h1>
       <h2>
-      Time Left: {timeLeft} Seconds
+      ⏳ Time Left: {timeLeft} Seconds
       </h2>
 
       {
@@ -121,7 +121,7 @@ useEffect(() => {
             }}
           >
 
-            <h3>{q.question}</h3>
+            <h3>📄 {q.question}</h3>
 
             <div>
               <input
@@ -165,7 +165,7 @@ useEffect(() => {
       }
 
       <button onClick={submitExam}>
-        Submit Exam
+        Submit Exam 🚀
       </button>
 
     </div>

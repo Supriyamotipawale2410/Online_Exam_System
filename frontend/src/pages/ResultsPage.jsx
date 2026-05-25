@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
+import '../styles/results.css';
 
 function ResultsPage() {
 
@@ -23,69 +24,77 @@ function ResultsPage() {
     }, []);
 
     return (
-                    <>
+
+        <>
+
             <Navbar />
-        <div style={{padding:'30px'}}>
 
-            <h1>Student Results</h1>
+            <div className="results-container">
 
-            <a href="http://127.0.0.1:5000/admin/download-results">
+                <div className="results-header">
 
-                <button
-                    style={{
-                        padding:'10px 20px',
-                        marginBottom:'20px',
-                        cursor:'pointer'
-                    }}
-                >
-                    Download Excel
-                </button>
+                    <h1 className="results-title">
+                        Student Results 📊
+                    </h1>
 
-            </a>
+                    <a href="http://127.0.0.1:5000/admin/download-results">
 
-            <table
-                border="1"
-                cellPadding="10"
-                style={{
-                    width:'100%',
-                    borderCollapse:'collapse'
-                }}
-            >
+                        <button className="download-btn">
+                            Download Excel 📥
+                        </button>
 
-                <thead>
-                    <tr>
-                        <th>Student ID</th>
-                        <th>Student Name</th>
-                        <th>Subject</th>
-                        <th>Total Questions</th>
-                        <th>Correct Answers</th>
-                        <th>Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        results.map((result, index) => (
+                    </a>
 
-                            <tr key={index}>
+                </div>
 
-                                <td>{result.student_id}</td>
-                                <td>{result.student_name}</td>
-                                <td>{result.subject_name}</td>
-                                <td>{result.total_questions}</td>
-                                <td>{result.correct_answers}</td>
-                                <td>{result.score}</td>
+                <div className="table-wrapper">
+
+                    <table className="results-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Student ID</th>
+                                <th>Student Name</th>
+                                <th>Subject</th>
+                                <th>Total Questions</th>
+                                <th>Correct Answers</th>
+                                <th>Score</th>
 
                             </tr>
 
-                        ))
-                    }
+                        </thead>
 
-                </tbody>
+                        <tbody>
 
-            </table>
+                            {
+                                results.map((result, index) => (
 
-        </div>
+                                    <tr key={index}>
+
+                                        <td>{result.student_id}</td>
+                                        <td>{result.student_name}</td>
+                                        <td>{result.subject_name}</td>
+                                        <td>{result.total_questions}</td>
+                                        <td>{result.correct_answers}</td>
+                                        <td>{result.score}</td>
+
+                                    </tr>
+
+                                ))
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
         </>
+
     );
 
 }

@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
+import '../styles/students.css';
 
 function StudentsPage() {
 
     const [students, setStudents] = useState([]);
-
     const [search, setSearch] = useState('');
-
     const [editingStudent, setEditingStudent] = useState(null);
 
     const [formData, setFormData] = useState({
@@ -103,230 +102,230 @@ function StudentsPage() {
 
             <Navbar />
 
-            <div style={{padding:'30px'}}>
+            <div className="students-container">
 
-                <h1>Student Management</h1>
+                <div className="students-header">
 
+                    <h1 className="students-title">
+                        Student Management
+                    </h1>
+
+                    <a href="http://127.0.0.1:5000/admin/download-students">
+
+                        <button className="download-btn">
+                            Download Excel
+                        </button>
+
+                    </a>
+
+                </div>
+                🔍
                 <input
+                    
                     type="text"
                     placeholder="Search Student"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    style={{
-                        padding:'10px',
-                        width:'300px',
-                        marginBottom:'20px'
-                    }}
+                    className="search-input"
                 />
 
-                <br />
+                <div className="table-wrapper">
 
-                <a href="http://127.0.0.1:5000/admin/download-students">
+                    <table className="students-table">
 
-                    <button
-                        style={{
-                            padding:'10px 20px',
-                            marginBottom:'20px'
-                        }}
-                    >
-                        Download Students Excel
-                    </button>
+                        <thead>
 
-                </a>
+                            <tr>
 
-                <table
-                    border="1"
-                    cellPadding="10"
-                    style={{
-                        width:'100%',
-                        borderCollapse:'collapse'
-                    }}
-                >
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>City</th>
+                                <th>Phone</th>
+                                <th>Gender</th>
+                                <th>Action</th>
 
-                    <thead>
+                            </tr>
 
-                        <tr>
+                        </thead>
 
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>City</th>
-                            <th>Phone</th>
-                            <th>Gender</th>
-                            <th>Action</th>
+                        <tbody>
 
-                        </tr>
+                            {
+                                filteredStudents.map((student) => (
 
-                    </thead>
+                                    <tr key={student.id}>
 
-                    <tbody>
+                                        <td>{student.student_id}</td>
 
-                        {
-                            filteredStudents.map((student) => (
+                                        <td>
 
-                                <tr key={student.id}>
+                                            {
+                                                editingStudent === student.id ? (
 
-                                    <td>{student.student_id}</td>
+                                                    <input
+                                                        className="edit-input"
+                                                        value={formData.student_name}
+                                                        onChange={(e) =>
+                                                            setFormData({
+                                                                ...formData,
+                                                                student_name:e.target.value
+                                                            })
+                                                        }
+                                                    />
 
-                                    <td>
+                                                ) : (
 
-                                        {
-                                            editingStudent === student.id ? (
+                                                    student.student_name
 
-                                                <input
-                                                    value={formData.student_name}
-                                                    onChange={(e) =>
-                                                        setFormData({
-                                                            ...formData,
-                                                            student_name:e.target.value
-                                                        })
-                                                    }
-                                                />
+                                                )
+                                            }
 
-                                            ) : (
+                                        </td>
 
-                                                student.student_name
+                                        <td>
 
-                                            )
-                                        }
+                                            {
+                                                editingStudent === student.id ? (
 
-                                    </td>
+                                                    <input
+                                                        className="edit-input"
+                                                        value={formData.email}
+                                                        onChange={(e) =>
+                                                            setFormData({
+                                                                ...formData,
+                                                                email:e.target.value
+                                                            })
+                                                        }
+                                                    />
 
-                                    <td>
+                                                ) : (
 
-                                        {
-                                            editingStudent === student.id ? (
+                                                    student.email
 
-                                                <input
-                                                    value={formData.email}
-                                                    onChange={(e) =>
-                                                        setFormData({
-                                                            ...formData,
-                                                            email:e.target.value
-                                                        })
-                                                    }
-                                                />
+                                                )
+                                            }
 
-                                            ) : (
+                                        </td>
 
-                                                student.email
+                                        <td>
 
-                                            )
-                                        }
+                                            {
+                                                editingStudent === student.id ? (
 
-                                    </td>
+                                                    <input
+                                                        className="edit-input"
+                                                        value={formData.city}
+                                                        onChange={(e) =>
+                                                            setFormData({
+                                                                ...formData,
+                                                                city:e.target.value
+                                                            })
+                                                        }
+                                                    />
 
-                                    <td>
+                                                ) : (
 
-                                        {
-                                            editingStudent === student.id ? (
+                                                    student.city
 
-                                                <input
-                                                    value={formData.city}
-                                                    onChange={(e) =>
-                                                        setFormData({
-                                                            ...formData,
-                                                            city:e.target.value
-                                                        })
-                                                    }
-                                                />
+                                                )
+                                            }
 
-                                            ) : (
+                                        </td>
 
-                                                student.city
+                                        <td>
 
-                                            )
-                                        }
+                                            {
+                                                editingStudent === student.id ? (
 
-                                    </td>
+                                                    <input
+                                                        className="edit-input"
+                                                        value={formData.phone}
+                                                        onChange={(e) =>
+                                                            setFormData({
+                                                                ...formData,
+                                                                phone:e.target.value
+                                                            })
+                                                        }
+                                                    />
 
-                                    <td>
+                                                ) : (
 
-                                        {
-                                            editingStudent === student.id ? (
+                                                    student.phone
 
-                                                <input
-                                                    value={formData.phone}
-                                                    onChange={(e) =>
-                                                        setFormData({
-                                                            ...formData,
-                                                            phone:e.target.value
-                                                        })
-                                                    }
-                                                />
+                                                )
+                                            }
 
-                                            ) : (
+                                        </td>
 
-                                                student.phone
+                                        <td>
 
-                                            )
-                                        }
+                                            {
+                                                editingStudent === student.id ? (
 
-                                    </td>
+                                                    <input
+                                                        className="edit-input"
+                                                        value={formData.gender}
+                                                        onChange={(e) =>
+                                                            setFormData({
+                                                                ...formData,
+                                                                gender:e.target.value
+                                                            })
+                                                        }
+                                                    />
 
-                                    <td>
+                                                ) : (
 
-                                        {
-                                            editingStudent === student.id ? (
+                                                    student.gender
 
-                                                <input
-                                                    value={formData.gender}
-                                                    onChange={(e) =>
-                                                        setFormData({
-                                                            ...formData,
-                                                            gender:e.target.value
-                                                        })
-                                                    }
-                                                />
+                                                )
+                                            }
 
-                                            ) : (
+                                        </td>
 
-                                                student.gender
+                                        <td>
 
-                                            )
-                                        }
+                                            {
+                                                editingStudent === student.id ? (
 
-                                    </td>
+                                                    <button
+                                                        className="save-btn"
+                                                        onClick={() => updateStudent(student.id)}
+                                                    >
+                                                        Save
+                                                    </button>
 
-                                    <td>
+                                                ) : (
 
-                                        {
-                                            editingStudent === student.id ? (
+                                                    <button
+                                                        className="edit-btn"
+                                                        onClick={() => editStudent(student)}
+                                                    >
+                                                        Edit ✏️
+                                                    </button>
 
-                                                <button
-                                                    onClick={() => updateStudent(student.id)}
-                                                >
-                                                    Save
-                                                </button>
+                                                )
+                                            }
 
-                                            ) : (
+                                            <button
+                                                className="delete-btn"
+                                                onClick={() => deleteStudent(student.id)}
+                                            >
+                                                Delete 🗑️
+                                            </button>
 
-                                                <button
-                                                    onClick={() => editStudent(student)}
-                                                >
-                                                    Edit
-                                                </button>
+                                        </td>
 
-                                            )
-                                        }
+                                    </tr>
 
-                                        <button
-                                            onClick={() => deleteStudent(student.id)}
-                                            style={{marginLeft:'10px'}}
-                                        >
-                                            Delete
-                                        </button>
+                                ))
+                            }
 
-                                    </td>
+                        </tbody>
 
-                                </tr>
+                    </table>
 
-                            ))
-                        }
-
-                    </tbody>
-
-                </table>
+                </div>
 
             </div>
 

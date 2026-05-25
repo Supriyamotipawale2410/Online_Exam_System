@@ -1,54 +1,65 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import '../styles/studentlogin.css';
 
 function StudentLogin() {
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const [studentId, setStudentId] = useState('');
-  const [studentName, setStudentName] = useState('');
+    const [studentId, setStudentId] = useState('');
+    const [studentName, setStudentName] = useState('');
 
-  const handleLogin = () => {
+    const handleLogin = () => {
 
-    localStorage.setItem('student_id', studentId);
-    localStorage.setItem('student_name', studentName);
+        localStorage.setItem('student_id', studentId);
+        localStorage.setItem('student_name', studentName);
 
-    navigate('/subjects');
+        navigate('/subjects');
 
-  };
+    };
 
-  return (
+    return (
 
-    <div style={{ padding: '30px' }}>
+        <div className="student-login-container">
 
-      <h1>Online Exam System</h1>
+            <div className="student-login-card">
 
-      <input
-        type="text"
-        placeholder="Enter Student ID"
-        value={studentId}
-        onChange={(e) => setStudentId(e.target.value)}
-      />
+                <h1 className="student-login-title">
+                    Online Exam System
+                </h1>
 
-      <br /><br />
+                <p className="student-login-subtitle">
+                    Student Login
+                </p>
 
-      <input
-        type="text"
-        placeholder="Enter Student Name"
-        value={studentName}
-        onChange={(e) => setStudentName(e.target.value)}
-      />
+                <input
+                    type="text"
+                    placeholder="Enter Student ID"
+                    value={studentId}
+                    onChange={(e) => setStudentId(e.target.value)}
+                    className="student-login-input"
+                />
 
-      <br /><br />
+                <input
+                    type="text"
+                    placeholder="Enter Student Name"
+                    value={studentName}
+                    onChange={(e) => setStudentName(e.target.value)}
+                    className="student-login-input"
+                />
 
-      <button onClick={handleLogin}>
-        Continue
-      </button>
+                <button
+                    onClick={handleLogin}
+                    className="student-login-btn"
+                >
+                    Continue
+                </button>
 
-    </div>
+            </div>
 
-  );
+        </div>
+
+    );
 
 }
 

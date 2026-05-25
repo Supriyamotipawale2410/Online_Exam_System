@@ -249,6 +249,81 @@ def download_students():
     )
 
 
+# =========================================
+# GET ALL SUBJECTS
+# =========================================
+
+@admin_bp.route('/all-subjects', methods=['GET'])
+def all_subjects():
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("""
+        SELECT *
+        FROM subjects
+    """)
+
+    rows = cursor.fetchall()
+
+    subjects = []
+
+    for row in rows:
+
+        subjects.append({
+            "id": row[0],
+            "subject_name": row[1]
+        })
+
+    cursor.close()
+
+    return jsonify(subjects)
+
+
+# =========================================
+# DELETE SUBJECT / QUESTION PAPER
+# =========================================
+
+@admin_bp.route('/delete-subject/<id>', methods=['DELETE'])
+def delete_subject(id):
+
+    try:
+
+        cursor = mysql.connection.cursor()
+
+        # DELETE RESULTS FIRST
+
+        cursor.execute("""
+            DELETE FROM results
+            WHERE subject_id = %s
+        """, (id,))
+
+        # DELETE QUESTIONS
+
+        cursor.execute("""
+            DELETE FROM questions
+            WHERE subject_id = %s
+        """, (id,))
+
+        # DELETE SUBJECT
+
+        cursor.execute("""
+            DELETE FROM subjects
+            WHERE id = %s
+        """, (id,))
+
+        mysql.connection.commit()
+
+        cursor.close()
+
+        return jsonify({
+            "message": "Question Paper Deleted Successfully"
+        })
+
+    except Exception as e:
+
+        return jsonify({
+            "message": str(e)
+        }), 500
 # Upload Excel Question Paper
 @admin_bp.route('/upload-paper', methods=['POST'])
 def upload_paper():

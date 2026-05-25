@@ -80,7 +80,7 @@ function Navbar() {
                             to="/subjects"
                             style={{
                                 color:'white',
-                                marginRight:'20px',
+                                marginRight:'50px',
                                 textDecoration:'none'
                             }}
                         >
@@ -89,7 +89,10 @@ function Navbar() {
 
                     )
                 }
-
+                <button onClick={() => navigate('/papers')}>
+                    Tests
+                </button>
+                
                 <button
                     onClick={logout}
                     style={{

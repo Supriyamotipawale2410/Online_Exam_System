@@ -2,22 +2,30 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import '../styles/subject.css';
 
 function SubjectPage() {
 
     const [subjects, setSubjects] = useState([]);
+    const [attemptedSubjects, setAttemptedSubjects] = useState([]);
 
     const navigate = useNavigate();
 
-    // const student_id = localStorage.getItem("student_id");
+    const student_id = localStorage.getItem("student_id");
     const student_name = localStorage.getItem("student_name");
 
     useEffect(() => {
 
+        fetchSubjects();
+
+        fetchAttemptedSubjects();
+
+    }, []);
+
+    const fetchSubjects = () => {
+
         axios.get("http://127.0.0.1:5000/student/subjects")
         .then((res) => {
-
-            console.log(res.data);
 
             setSubjects(res.data);
 
@@ -28,47 +36,117 @@ function SubjectPage() {
 
         });
 
-    }, []);
+    };
+
+    const fetchAttemptedSubjects = () => {
+
+        axios.get(
+            `http://127.0.0.1:5000/student/attempted-subjects/${student_id}`
+        )
+        .then((res) => {
+
+            setAttemptedSubjects(res.data);
+
+        })
+        .catch((err) => {
+
+            console.log(err);
+
+        });
+
+    };
 
     const selectSubject = (subject_id, subject_name) => {
+
         localStorage.setItem('subject_name', subject_name);
+
         navigate(`/exam/${subject_id}`);
 
     };
 
     return (
 
-                <>
-        <Navbar />
-        <div style={{padding:'30px'}}>
+        <>
 
-            <h1>Welcome {student_name}</h1>
+            <Navbar />
 
-            <h2>Select Subject</h2>
+            <div className="subject-container">
 
-            {
-                subjects.map((subject) => (
+                <div className="subject-header">
 
-                    <div
-                        key={subject.id}
-                        style={{
-                            border:'1px solid gray',
-                            padding:'20px',
-                            marginBottom:'20px',
-                            cursor:'pointer'
-                        }}
-                        onClick={() => selectSubject(subject.id, subject.subject_name)}
-                    >
+                    <h1 className="welcome-text">
+                        Welcome, {student_name}
+                    </h1>
 
-                        <h3>{subject.subject_name}</h3>
+                    <p className="subject-subtitle">
+                       📘 Select a subject to start your exam
+                    </p>
 
-                    </div>
+                </div>
 
-                ))
-            }
+                <div className="subject-grid">
 
-        </div>
-            </>
+                    {
+                        subjects.map((subject) => {
+
+                            const attempted =
+                                attemptedSubjects.includes(subject.id);
+
+                            return (
+
+                                <div
+                                    key={subject.id}
+                                    className={
+                                        attempted
+                                        ? "subject-card attempted-card"
+                                        : "subject-card"
+                                    }
+                                >
+
+                                    <h3 className="subject-title">
+                                        {subject.subject_name}
+                                    </h3>
+
+                                    {
+                                        attempted ? (
+
+                                            <button
+                                                disabled
+                                                className="attempted-btn"
+                                            >
+                                                Attempted ✅
+                                            </button>
+
+                                        ) : (
+
+                                            <button
+                                                className="start-btn"
+                                                onClick={() =>
+                                                    selectSubject(
+                                                        subject.id,
+                                                        subject.subject_name
+                                                    )
+                                                }
+                                            >
+                                               📝 Start Exam
+                                            </button>
+
+                                        )
+                                    }
+
+                                </div>
+
+                            );
+
+                        })
+                    }
+
+                </div>
+
+            </div>
+
+        </>
+
     );
 
 }

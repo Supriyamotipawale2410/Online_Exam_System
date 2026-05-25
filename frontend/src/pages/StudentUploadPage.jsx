@@ -9,14 +9,6 @@ function UploadStudentsPage() {
 
     const uploadFile = () => {
 
-        if(!file){
-
-            alert('Please Select Excel File');
-
-            return;
-
-        }
-
         const formData = new FormData();
 
         formData.append('file', file);
@@ -28,8 +20,6 @@ function UploadStudentsPage() {
         .then((response) => {
 
             alert(response.data.message);
-
-            setFile(null);
 
         })
         .catch((error) => {
@@ -57,25 +47,14 @@ function UploadStudentsPage() {
                     </h1>
 
                     <p className="upload-students-subtitle">
-                        Upload student details using Excel sheet
+                        Upload student data using Excel sheet
                     </p>
 
                     <input
                         type="file"
-                        accept=".xlsx,.xls"
                         onChange={(e) => setFile(e.target.files[0])}
                         className="upload-students-file"
                     />
-
-                    {
-                        file && (
-
-                            <p className="selected-file">
-                                Selected File: {file.name}
-                            </p>
-
-                        )
-                    }
 
                     <button
                         onClick={uploadFile}

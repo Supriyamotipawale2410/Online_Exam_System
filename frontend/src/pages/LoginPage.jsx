@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import Navbar from '../components/Navbar';
+import '../styles/login.css';
 
 function LoginPage() {
 
@@ -32,42 +32,42 @@ function LoginPage() {
 
             fetch('http://127.0.0.1:5000/student/login', {
 
-    method:'POST',
+                method:'POST',
 
-    headers:{
-        'Content-Type':'application/json'
-    },
+                headers:{
+                    'Content-Type':'application/json'
+                },
 
-    body: JSON.stringify({
+                body: JSON.stringify({
 
-        student_id: studentId,
-        student_name: studentName
+                    student_id: studentId,
+                    student_name: studentName
 
-    })
+                })
 
-})
-.then(async(res) => {
+            })
+            .then(async(res) => {
 
-    const data = await res.json();
+                const data = await res.json();
 
-    if(res.ok) {
+                if(res.ok) {
 
-        localStorage.setItem('student_id', studentId);
+                    localStorage.setItem('student_id', studentId);
 
-        localStorage.setItem('student_name', studentName);
+                    localStorage.setItem('student_name', studentName);
 
-        localStorage.setItem('role', 'student');
+                    localStorage.setItem('role', 'student');
 
-        navigate('/subjects');
+                    navigate('/subjects');
 
-    }
-    else {
+                }
+                else {
 
-        alert(data.message);
+                    alert(data.message);
 
-    }
+                }
 
-});
+            });
 
         }
 
@@ -75,46 +75,28 @@ function LoginPage() {
 
     return (
 
-        <div
-            style={{
-                display:'flex',
-                justifyContent:'center',
-                alignItems:'center',
-                height:'100vh',
-                background:'#f5f5f5'
-            }}
-        >
+        <div className="login-container">
 
-            <div
-                style={{
-                    width:'400px',
-                    background:'white',
-                    padding:'30px',
-                    borderRadius:'10px',
-                    boxShadow:'0px 0px 10px gray'
-                }}
-            >
+            <div className="login-card">
 
-                <h1 style={{textAlign:'center'}}>
-                    Online Exam System
+                <h1 className="login-title">
+                    🎓 Online Exam System
                 </h1>
 
                 <select
                     value={role}
                     onChange={(e) => setRole(e.target.value)}
-                    style={{
-                        width:'100%',
-                        padding:'10px',
-                        marginBottom:'20px'
-                    }}
+                    className="login-input"
                 >
+
                     <option value="student">
-                        Student
+                       👨‍🎓 Student
                     </option>
 
                     <option value="admin">
-                        Admin
+                        👨Admin
                     </option>
+
                 </select>
 
                 <input
@@ -122,11 +104,7 @@ function LoginPage() {
                     placeholder="Enter ID"
                     value={studentId}
                     onChange={(e) => setStudentId(e.target.value)}
-                    style={{
-                        width:'100%',
-                        padding:'10px',
-                        marginBottom:'20px'
-                    }}
+                    className="login-input"
                 />
 
                 <input
@@ -134,23 +112,12 @@ function LoginPage() {
                     placeholder="Enter Name"
                     value={studentName}
                     onChange={(e) => setStudentName(e.target.value)}
-                    style={{
-                        width:'100%',
-                        padding:'10px',
-                        marginBottom:'20px'
-                    }}
+                    className="login-input"
                 />
 
                 <button
                     onClick={login}
-                    style={{
-                        width:'100%',
-                        padding:'12px',
-                        background:'blue',
-                        color:'white',
-                        border:'none',
-                        cursor:'pointer'
-                    }}
+                    className="login-btn"
                 >
                     Login
                 </button>

@@ -3,12 +3,16 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import SubjectPage from './pages/SubjectPage';
 import ExamPage from './pages/ExamPage';
-import UploadPage from './pages/UploadPage';
+import UploadPage from './pages/QuestionUploadPage';
 import ResultsPage from './pages/ResultsPage';
 import AdminDashboard from './pages/AdminDashboard';
 import UploadStudentsPage from './pages/UploadStudentsPage';
 import StudentsPage from './pages/StudentsPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import UploadOptionsPage from './pages/UploadOptionsPage';
+import QuestionUploadPage from './pages/QuestionUploadPage';
+import StudentUploadPage from './pages/StudentUploadPage';
+import PapersPage from './pages/PapersPage';
 
 function App() {
 
@@ -51,6 +55,14 @@ function App() {
                 />
 
                 <Route
+                    path="/papers"
+                    element={
+                        <ProtectedRoute role="admin">
+                            <PapersPage />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
                     path="/upload-students"
                     element={
                         <ProtectedRoute role="admin">
@@ -59,13 +71,33 @@ function App() {
                     }
                 />
                 <Route
-                    path="/upload"
-                    element={
-                        <ProtectedRoute role="admin">
-                            <UploadPage />
-                        </ProtectedRoute>
-                    }
-                />
+                    
+    path="/upload"
+    element={
+        <ProtectedRoute role="admin">
+            <UploadOptionsPage />
+        </ProtectedRoute>
+    }
+        />
+
+        <Route
+            path="/upload-questions"
+            element={
+                <ProtectedRoute role="admin">
+                    <QuestionUploadPage />
+                </ProtectedRoute>
+            }
+        />
+
+        <Route
+            path="/upload-students"
+            element={
+                <ProtectedRoute role="admin">
+                    <StudentUploadPage />
+                </ProtectedRoute>
+            }
+        />
+                
 
                 <Route
                     path="/results"

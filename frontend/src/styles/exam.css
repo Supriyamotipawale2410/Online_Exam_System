@@ -1,0 +1,14 @@
+.exam-question {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.08);
+}
+
+.option {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    background: #f8fafc;
+}

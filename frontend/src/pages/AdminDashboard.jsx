@@ -1,72 +1,109 @@
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import '../styles/dashboard.css';
 
 function AdminDashboard() {
 
     return (
+
         <>
-        <Navbar />
-        <div style={{padding:'30px'}}>
 
-            <h1>Admin Dashboard</h1>
+            <Navbar />
 
-            <div style={{marginTop:'30px'}}>
+            <div className="admin-dashboard-container">
 
-                <Link to="/upload-students">
+                <h1 className="admin-dashboard-title">
+                    🛡️ Admin Dashboard
+                </h1>
 
-                    <button
-                        style={{
-                            padding:'15px',
-                            marginRight:'20px'
-                        }}
+                <p className="admin-dashboard-subtitle">
+                    Manage students, papers, uploads and results
+                </p>
+
+                <div className="admin-dashboard-grid">
+
+                    <Link
+                        to="/upload-students"
+                        className="dashboard-link"
                     >
-                        Upload Students
-                    </button>
 
-                </Link>
+                        <div className="dashboard-box pastel-pink">
 
-                <Link to="/students">
+                            <h2>👨‍🎓</h2>
 
-                    <button
-                        style={{
-                            padding:'15px',
-                            marginRight:'20px'
-                        }}
+                            <h3>Upload Students Data</h3>
+
+                            <p>
+                                Upload student Excel sheet
+                            </p>
+
+                        </div>
+
+                    </Link>
+
+                    <Link
+                        to="/students"
+                        className="dashboard-link"
                     >
-                        Manage Students
-                    </button>
 
-                </Link>
+                        <div className="dashboard-box pastel-purple">
 
-                <Link to="/upload">
+                            <h2>📋</h2>
 
-                    <button
-                        style={{
-                            padding:'15px',
-                            marginRight:'20px'
-                        }}
+                            <h3>Manage Students Data</h3>
+
+                            <p>
+                                Edit and manage student data
+                            </p>
+
+                        </div>
+
+                    </Link>
+
+                    <Link
+                        to="/upload"
+                        className="dashboard-link"
                     >
-                        Upload Questions
-                    </button>
 
-                </Link>
+                        <div className="dashboard-box pastel-blue">
 
-                <Link to="/results">
+                            <h2>📚</h2>
 
-                    <button
-                        style={{
-                            padding:'15px'
-                        }}
+                            <h3>Upload Question Paper</h3>
+
+                            <p>
+                                Upload exam papers in Excel
+                            </p>
+
+                        </div>
+
+                    </Link>
+
+                    <Link
+                        to="/results"
+                        className="dashboard-link"
                     >
-                        View Results
-                    </button>
 
-                </Link>
+                        <div className="dashboard-box pastel-green">
+
+                            <h2>📊</h2>
+
+                            <h3>View Results</h3>
+
+                            <p>
+                                Check student performance
+                            </p>
+
+                        </div>
+
+                    </Link>
+
+                </div>
 
             </div>
 
-        </div>
         </>
+
     );
 
 }

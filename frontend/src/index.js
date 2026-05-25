@@ -3,6 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './styles/global.css';
+import './styles/navbar.css';
+import './styles/table.css';
+import './styles/forms.css';
+import './styles/dashboard.css';
+import './styles/exam.css';
+import './styles/login.css';
+import './styles/papers.css';
+import './styles/results.css';
+import './styles/studentlogin.css';
+import './styles/students.css';
+import './styles/subject.css';
+import './styles/upload.css';
+import './styles/uploadoptions.css';
+import './styles/uploadstudents.css';
+import './styles/theme.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
