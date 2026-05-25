@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import '../styles/exam.css';
 
 function ExamPage() {
 
@@ -102,10 +103,10 @@ useEffect(() => {
         <>
     <Navbar />
 
-    <div className="page-container">
+    <div className="exam-container">
 
-      <h1>Exam Page 🧠</h1>
-      <h2>
+      <h1 className="exam-title">🧠 Exam Page</h1>
+      <h2 className="exam-timer">
       ⏳ Time Left: {timeLeft} Seconds
       </h2>
 
@@ -114,16 +115,14 @@ useEffect(() => {
 
           <div
             key={q.id}
-            style={{
-              border: '1px solid black',
-              padding: '20px',
-              marginBottom: '20px'
-            }}
+            className="question-card"
           >
 
-            <h3>📄 {q.question}</h3>
+            <h3 className="question-title">
+              📄 {q.question}
+            </h3>
 
-            <div>
+            <div className="option-box">
               <input
                 type="radio"
                 name={`question-${q.id}`}
@@ -132,7 +131,7 @@ useEffect(() => {
               {q.option1}
             </div>
 
-            <div>
+            <div className="option-box">
               <input
                 type="radio"
                 name={`question-${q.id}`}
@@ -141,7 +140,7 @@ useEffect(() => {
               {q.option2}
             </div>
 
-            <div>
+            <div className="option-box">
               <input
                 type="radio"
                 name={`question-${q.id}`}
@@ -150,7 +149,7 @@ useEffect(() => {
               {q.option3}
             </div>
 
-            <div>
+            <div className="option-box">
               <input
                 type="radio"
                 name={`question-${q.id}`}
@@ -164,8 +163,11 @@ useEffect(() => {
         ))
       }
 
-      <button onClick={submitExam}>
-        Submit Exam 🚀
+      <button
+        className="submit-btn"
+        onClick={submitExam}
+      >
+        🚀 Submit Exam 
       </button>
 
     </div>

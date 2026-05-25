@@ -51,7 +51,7 @@ function UploadPage() {
                     <h1 className="upload-title">
                         Upload Question Paper
                     </h1>
-
+                    <p>Upload question paper using Excel sheet</p>
                     <input
                         type="text"
                         placeholder="Enter Subject Name"
@@ -59,7 +59,7 @@ function UploadPage() {
                         onChange={(e) => setSubjectName(e.target.value)}
                         className="upload-input"
                     />
-                    📎
+                
                     <input
                         type="file"
                         accept=".xlsx"

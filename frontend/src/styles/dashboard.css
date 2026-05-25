@@ -36,14 +36,15 @@
 
     cursor:pointer;
 
-    backdrop-filter:blur(10px);
-
-    box-shadow:
-        0 8px 24px rgba(0,0,0,0.08);
+    border:2px solid rgba(255,255,255,0.7);
 }
 
 .dashboard-box:hover{
-    transform:translateY(-8px) scale(1.02);
+
+    transform:scale(1.03);
+
+    filter:brightness(1.4);
+
 }
 
 .dashboard-box h2{
@@ -68,8 +69,8 @@
     background:
     linear-gradient(
         135deg,
-        #ffd6e0,
-        #fff1f2
+        #ffb7c5,
+        #ffd9e2
     );
 }
 
@@ -77,8 +78,8 @@
     background:
     linear-gradient(
         135deg,
-        #e9d5ff,
-        #f5f3ff
+        #cdb4ff,
+        #e9d8fd
     );
 }
 
@@ -86,8 +87,8 @@
     background:
     linear-gradient(
         135deg,
-        #dbeafe,
-        #eff6ff
+        #a0c4ff,
+        #d6e6ff
     );
 }
 
@@ -95,7 +96,7 @@
     background:
     linear-gradient(
         135deg,
-        #d1fae5,
-        #ecfdf5
+        #95d5b2,
+        #d8f3dc
     );
 }
