@@ -64,3 +64,16 @@
     border-radius:8px;
     cursor:not-allowed;
 }
+
+.subject-info{
+
+    margin-top:15px;
+
+    margin-bottom:20px;
+
+    color:#6b7280;
+
+    font-size:15px;
+
+    line-height:1.8;
+}

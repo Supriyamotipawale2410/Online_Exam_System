@@ -1,0 +1,37 @@
+.profile-container{
+
+    padding:40px;
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        135deg,
+        #fff7f7,
+        #f7f4ff
+    );
+}
+
+.profile-card{
+
+    width:400px;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:24px;
+
+    border:1px solid #eadcff;
+
+    margin-top:30px;
+}
+
+.profile-card p{
+
+    margin-bottom:18px;
+
+    font-size:18px;
+
+    color:#4b5563;
+}

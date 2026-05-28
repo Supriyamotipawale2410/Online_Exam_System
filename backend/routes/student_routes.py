@@ -237,3 +237,38 @@ def submit_exam():
     return jsonify({
         "message": "Exam Submitted Successfully"
     })
+
+
+    @student_bp.route('/my-results/<student_id>', methods=['GET'])
+def my_results(student_id):
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("""
+        SELECT
+            subject_name,
+            total_questions,
+            correct_answers,
+            score
+        FROM results
+        WHERE student_id = %s
+    """, (student_id,))
+
+    rows = cursor.fetchall()
+
+    results = []
+
+    for row in rows:
+
+        results.append({
+
+            "subject_name": row[0],
+            "total_questions": row[1],
+            "correct_answers": row[2],
+            "score": row[3]
+
+        })
+
+    cursor.close()
+
+    return jsonify(results)

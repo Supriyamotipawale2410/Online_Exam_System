@@ -106,6 +106,16 @@ function SubjectPage() {
                                     <h3 className="subject-title">
                                         {subject.subject_name}
                                     </h3>
+                                    
+                                    <div className="subject-info">
+
+                                        <p>🕒 60 Minutes</p>
+
+                                        <p>❓ 20 Questions</p>
+
+                                        <p>🎯 Passing: 40%</p>
+
+                                    </div>
 
                                     {
                                         attempted ? (

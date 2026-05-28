@@ -14,7 +14,7 @@ function StudentLogin() {
         localStorage.setItem('student_id', studentId);
         localStorage.setItem('student_name', studentName);
 
-        navigate('/subjects');
+        navigate('/student-dashboard');
 
     };
 

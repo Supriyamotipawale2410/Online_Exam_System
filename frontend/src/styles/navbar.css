@@ -1,15 +1,81 @@
-.navbar {
-    background-color: #0f172a;
-    padding: 15px 30px;
-    display: flex;
-    gap: 20px;
-    align-items: center;
+.navbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 40px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #fdf2f8,
+        #f3e8ff
+    );
+
+    border-bottom:1px solid #eadcff;
 }
 
-.navbar button {
-    background-color: #334155;
+.logo{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#5b4b8a;
 }
 
-.navbar button:hover {
-    background-color: #475569;
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:#4b5563;
+
+    font-weight:600;
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+
+    background:#ffffff;
+
+    color:#7c3aed;
+}
+
+.logout-btn{
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    background:#ffe4e6;
+
+    color:#be123c;
+
+    cursor:pointer;
+
+    font-weight:600;
+}
+
+.logout-btn:hover{
+
+    background:#fecdd3;
 }

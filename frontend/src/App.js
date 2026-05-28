@@ -13,6 +13,9 @@ import UploadOptionsPage from './pages/UploadOptionsPage';
 import QuestionUploadPage from './pages/QuestionUploadPage';
 import StudentUploadPage from './pages/StudentUploadPage';
 import PapersPage from './pages/PapersPage';
+import StudentDashboard from './pages/StudentDashboard';
+import MyResultsPage from './pages/MyResultsPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
 
@@ -117,8 +120,37 @@ function App() {
                     }
                 />
 
+                <Route
+                path="/student-dashboard"
+                element={
+                    <ProtectedRoute role="student">
+                        <StudentDashboard />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/my-results"
+                element={
+                    <ProtectedRoute role="student">
+                        <MyResultsPage />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/profile"
+                element={
+                    <ProtectedRoute role="student">
+                        <ProfilePage />
+                    </ProtectedRoute>
+                }
+            />
+
+
             </Routes>
 
+            
         </BrowserRouter>
 
     );

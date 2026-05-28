@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
+import '../styles/navbar.css';
 
 function Navbar() {
 
@@ -16,91 +17,73 @@ function Navbar() {
 
     return (
 
-        <div
-            style={{
-                background:'#222',
-                padding:'15px',
-                display:'flex',
-                justifyContent:'space-between',
-                alignItems:'center'
-            }}
-        >
+        <div className="navbar">
 
-            <h2 style={{color:'white'}}>
-                Online Exam System
-            </h2>
+            <div className="logo">
 
-            <div>
+                🎓 Online Exam System
+
+            </div>
+
+            <div className="nav-links">
 
                 {
-                    role === 'admin' && (
+                    role === 'admin' ? (
 
                         <>
-                            <Link
-                                to="/admin-dashboard"
-                                style={{
-                                    color:'white',
-                                    marginRight:'20px',
-                                    textDecoration:'none'
-                                }}
-                            >
-                                Dashboard
+
+                            <Link to="/admin-dashboard">
+                                🏠 Dashboard
                             </Link>
 
-                            <Link
-                                to="/upload"
-                                style={{
-                                    color:'white',
-                                    marginRight:'20px',
-                                    textDecoration:'none'
-                                }}
-                            >
-                                Upload
+                            <Link to="/upload-options">
+                                ⬆ Upload
                             </Link>
 
-                            <Link
-                                to="/results"
-                                style={{
-                                    color:'white',
-                                    marginRight:'20px',
-                                    textDecoration:'none'
-                                }}
-                            >
-                                Results
+                            <Link to="/papers">
+                                📄 Papers
                             </Link>
+
+                            <Link to="/students">
+                                👨‍🎓 Students
+                            </Link>
+
+                            <Link to="/results">
+                                📊 Results
+                            </Link>
+
+                        </>
+
+                    ) : (
+
+                        <>
+
+                            <Link to="/student-dashboard">
+                                🏠 Dashboard
+                            </Link>
+
+                            <Link to="/subjects">
+                                📘 Subjects
+                            </Link>
+
+                            <Link to="/my-results">
+                                📊 My Results
+                            </Link>
+
+                            <Link to="/profile">
+                                👤 Profile
+                            </Link>
+
                         </>
 
                     )
                 }
 
-                {
-                    role === 'student' && (
-
-                        <Link
-                            to="/subjects"
-                            style={{
-                                color:'white',
-                                marginRight:'50px',
-                                textDecoration:'none'
-                            }}
-                        >
-                            Subjects
-                        </Link>
-
-                    )
-                }
-                <button onClick={() => navigate('/papers')}>
-                    Tests
-                </button>
-                
                 <button
+                    className="logout-btn"
                     onClick={logout}
-                    style={{
-                        padding:'8px 15px',
-                        cursor:'pointer'
-                    }}
                 >
-                    Logout
+                    🚪 Logout
                 </button>
 
             </div>
