@@ -56,3 +56,98 @@
 .upload-students-btn:hover{
     background:hsl(224, 76%, 48%);
 }
+
+/* =====================================
+   TABLET VIEW
+   768px - 1024px
+   ===================================== */
+
+@media (max-width:1024px){
+
+    .upload-students-container{
+        padding:25px;
+    }
+
+    .upload-students-card{
+
+        width:80%;
+
+        max-width:500px;
+
+        padding:35px;
+    }
+
+    .upload-students-title{
+
+        font-size:30px;
+    }
+
+    .upload-students-subtitle{
+
+        font-size:16px;
+    }
+
+}
+
+
+/* =====================================
+   MOBILE VIEW
+   Below 768px
+   ===================================== */
+
+@media (max-width:768px){
+
+    .upload-students-container{
+
+        padding:15px;
+    }
+
+    .upload-students-card{
+
+        width:100%;
+
+        max-width:400px;
+
+        padding:25px;
+
+        border-radius:12px;
+    }
+
+    .upload-students-title{
+
+        font-size:24px;
+
+        margin-bottom:8px;
+    }
+
+    .upload-students-subtitle{
+
+        font-size:14px;
+
+        margin-bottom:20px;
+    }
+
+    .upload-students-file{
+
+        font-size:14px;
+
+        padding:10px;
+    }
+
+    .selected-file{
+
+        font-size:13px;
+
+        word-break:break-word;
+    }
+
+    .upload-students-btn{
+
+        width:100%;
+
+        padding:12px;
+
+        font-size:15px;
+    }
+
+}

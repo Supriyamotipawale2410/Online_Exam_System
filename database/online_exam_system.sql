@@ -43,7 +43,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,'Capital of India?','Mumbai','Delhi','Pune','Goa','Delhi',NULL),(2,'2+2?','1','2','3','4','4',NULL),(3,'Capital of India?','Mumbai','Delhi','Pune','Goa','Delhi',NULL),(4,'2+2?','1','2','3','4','4',NULL),(5,'who is prime minister','N modi','Fadnvis','Rane','Pawar','N modi',NULL),(6,'2-2= ?','0','1','2','3','0',NULL),(8,'Capital of India?','Mumbai','Delhi','Pune','Goa','Delhi',4),(9,'2+2?','1','2','3','4','4',4),(10,'who is prime minister','N modi','Fadnvis','Rane','Pawar','N modi',4),(11,'2-2= ?','0','1','2','3','0',4),(12,'Capital of India?','Mumbai','Delhi','Pune','Goa','Delhi',5),(13,'2+2?','1','2','3','4','4',5),(14,'who is prime minister','N modi','Fadnvis','Rane','Pawar','N modi',5),(15,'2-2= ?','0','1','2','3','0',5),(16,'Capital of India?','Mumbai','Delhi','Pune','Goa','Delhi',6),(17,'2+2?','1','2','3','4','4',6),(18,'who is prime minister','N modi','Fadnvis','Rane','Pawar','N modi',6),(19,'2-2= ?','0','1','2','3','0',6),(20,'Capital of India?','Mumbai','Delhi','Pune','Goa','Delhi',7),(21,'2+2?','1','2','3','4','4',7),(22,'who is prime minister','N modi','Fadnvis','Rane','Pawar','N modi',7),(23,'2-2= ?','0','1','2','3','0',7),(24,'Capital of India?','Mumbai','Delhi','Pune','Goa','Delhi',8),(25,'2+2?','1','2','3','4','4',8),(26,'who is prime minister','N modi','Fadnvis','Rane','Pawar','N modi',8),(27,'2-2= ?','0','1','2','3','0',8);
+INSERT INTO `questions` VALUES (1,'Capital of India?','Mumbai','Delhi','Pune','Goa','Delhi',NULL),(2,'2+2?','1','2','3','4','4',NULL),(3,'Capital of India?','Mumbai','Delhi','Pune','Goa','Delhi',NULL),(4,'2+2?','1','2','3','4','4',NULL),(5,'who is prime minister','N modi','Fadnvis','Rane','Pawar','N modi',NULL),(6,'2-2= ?','0','1','2','3','0',NULL),(8,'Capital of India?','Mumbai','Delhi','Pune','Goa','Delhi',4),(9,'2+2?','1','2','3','4','4',4),(10,'who is prime minister','N modi','Fadnvis','Rane','Pawar','N modi',4),(11,'2-2= ?','0','1','2','3','0',4),(12,'Capital of India?','Mumbai','Delhi','Pune','Goa','Delhi',5),(13,'2+2?','1','2','3','4','4',5),(14,'who is prime minister','N modi','Fadnvis','Rane','Pawar','N modi',5),(15,'2-2= ?','0','1','2','3','0',5),(16,'Capital of India?','Mumbai','Delhi','Pune','Goa','Delhi',6),(17,'2+2?','1','2','3','4','4',6),(18,'who is prime minister','N modi','Fadnvis','Rane','Pawar','N modi',6),(19,'2-2= ?','0','1','2','3','0',6),(20,'Capital of India?','Mumbai','Delhi','Pune','Goa','Delhi',7),(21,'2+2?','1','2','3','4','4',7),(22,'who is prime minister','N modi','Fadnvis','Rane','Pawar','N modi',7),(23,'2-2= ?','0','1','2','3','0',7);
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +69,7 @@ CREATE TABLE `results` (
   UNIQUE KEY `unique_student_subject` (`student_id`,`subject_id`),
   KEY `fk_result_subject` (`subject_id`),
   CONSTRAINT `fk_result_subject` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,7 +78,7 @@ CREATE TABLE `results` (
 
 LOCK TABLES `results` WRITE;
 /*!40000 ALTER TABLE `results` DISABLE KEYS */;
-INSERT INTO `results` VALUES (2,'4','cc',3,2,2,'2026-05-20 06:07:22',4,NULL),(8,'3','ff',4,1,1,'2026-05-20 06:59:23',4,'Java'),(9,'1','cf',0,0,0,'2026-05-20 07:26:46',4,'Java'),(10,'3','s',4,3,3,'2026-05-20 07:32:11',5,'C++'),(11,'1','qq',4,2,2,'2026-05-20 07:34:19',6,'WPT'),(12,'101','supriya',4,0,0,'2026-05-23 05:37:58',7,'DBT'),(13,'102','amit',3,0,0,'2026-05-23 05:39:44',7,'DBT'),(14,'101','supriya',4,0,0,'2026-05-23 05:40:26',6,'WPT'),(15,'103','rajesh',4,4,4,'2026-05-23 06:32:09',7,'DBT'),(16,'101','supriya',4,1,1,'2026-05-25 04:27:24',8,'Java');
+INSERT INTO `results` VALUES (2,'4','cc',3,2,2,'2026-05-20 06:07:22',4,NULL),(8,'3','ff',4,1,1,'2026-05-20 06:59:23',4,'Java'),(9,'1','cf',0,0,0,'2026-05-20 07:26:46',4,'Java'),(10,'3','s',4,3,3,'2026-05-20 07:32:11',5,'C++'),(11,'1','qq',4,2,2,'2026-05-20 07:34:19',6,'WPT'),(12,'101','supriya',4,0,0,'2026-05-23 05:37:58',7,'DBT'),(13,'102','amit',3,0,0,'2026-05-23 05:39:44',7,'DBT'),(14,'101','supriya',4,0,0,'2026-05-23 05:40:26',6,'WPT'),(15,'103','rajesh',4,4,4,'2026-05-23 06:32:09',7,'DBT'),(17,'101','supriya',0,0,0,'2026-05-25 06:02:23',4,'Java'),(18,'101','supriya',0,0,0,'2026-05-25 06:04:34',5,'C++');
 /*!40000 ALTER TABLE `results` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +132,7 @@ CREATE TABLE `subjects` (
 
 LOCK TABLES `subjects` WRITE;
 /*!40000 ALTER TABLE `subjects` DISABLE KEYS */;
-INSERT INTO `subjects` VALUES (2,'Python'),(4,'Java'),(5,'C++'),(6,'WPT'),(7,'DBT'),(8,'Java');
+INSERT INTO `subjects` VALUES (2,'Python'),(4,'Java'),(5,'C++'),(6,'WPT'),(7,'DBT');
 /*!40000 ALTER TABLE `subjects` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -145,4 +145,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-05-25 10:00:15
+-- Dump completed on 2026-06-01 11:43:59

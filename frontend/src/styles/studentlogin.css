@@ -56,3 +56,87 @@
 .student-login-btn:hover{
     background:#1d4ed8;
 }
+
+/* =====================================
+   TABLET VIEW
+   768px - 1024px
+   ===================================== */
+
+@media (max-width:1024px){
+
+    .student-login-card{
+
+        width:80%;
+
+        max-width:450px;
+
+        padding:35px;
+    }
+
+    .student-login-title{
+
+        font-size:30px;
+    }
+
+    .student-login-subtitle{
+
+        font-size:15px;
+    }
+
+}
+
+
+/* =====================================
+   MOBILE VIEW
+   Below 768px
+   ===================================== */
+
+@media (max-width:768px){
+
+    .student-login-container{
+
+        padding:20px;
+
+        box-sizing:border-box;
+    }
+
+    .student-login-card{
+
+        width:100%;
+
+        max-width:380px;
+
+        padding:25px;
+
+        border-radius:12px;
+    }
+
+    .student-login-title{
+
+        font-size:24px;
+    }
+
+    .student-login-subtitle{
+
+        font-size:14px;
+
+        margin-bottom:20px;
+    }
+
+    .student-login-input{
+
+        padding:12px;
+
+        font-size:14px;
+
+        margin-bottom:15px;
+    }
+
+    .student-login-btn{
+
+        padding:12px;
+
+        font-size:15px;
+    }
+
+}

@@ -32,25 +32,11 @@ function Navbar() {
 
                         <>
 
-                            <Link to="/admin-dashboard">
-                                🏠 Dashboard
-                            </Link>
-
-                            <Link to="/upload-options">
-                                ⬆ Upload
-                            </Link>
-
-                            <Link to="/papers">
-                                📄 Papers
-                            </Link>
-
-                            <Link to="/students">
-                                👨‍🎓 Students
-                            </Link>
-
-                            <Link to="/results">
-                                📊 Results
-                            </Link>
+                            <Link to="/admin-dashboard">🏠 Dashboard</Link>
+                            <Link to="/upload">📤 Upload</Link>
+                            <Link to="/students">👨‍🎓 Students</Link>
+                            <Link to="/papers">📄 Papers</Link>
+                            <Link to="/results">📊 Results</Link>
 
                         </>
 
@@ -73,6 +59,8 @@ function Navbar() {
                             <Link to="/profile">
                                 👤 Profile
                             </Link>
+
+                            
 
                         </>
 

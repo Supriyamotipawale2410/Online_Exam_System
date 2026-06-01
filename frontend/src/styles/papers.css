@@ -43,3 +43,82 @@
 .delete-btn:hover{
     background:#b91c1c;
 }
+
+/* =====================================
+   TABLET VIEW
+   768px - 1024px
+   ===================================== */
+
+@media (max-width:1024px){
+
+    .page-container{
+        padding:25px;
+    }
+
+    .page-title{
+        font-size:30px;
+        margin-bottom:25px;
+    }
+
+    .papers-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+        gap:18px;
+    }
+
+    .paper-card{
+        padding:22px;
+    }
+
+    .paper-title{
+        font-size:20px;
+    }
+
+}
+
+
+/* =====================================
+   MOBILE VIEW
+   Below 768px
+   ===================================== */
+
+@media (max-width:768px){
+
+    .page-container{
+        padding:15px;
+    }
+
+    .page-title{
+        font-size:26px;
+        text-align:center;
+        margin-bottom:20px;
+    }
+
+    .papers-grid{
+
+        grid-template-columns:1fr;
+
+        gap:15px;
+    }
+
+    .paper-card{
+        padding:18px;
+    }
+
+    .paper-title{
+        font-size:18px;
+        text-align:center;
+    }
+
+    .delete-btn{
+
+        width:100%;
+
+        padding:12px;
+
+        font-size:15px;
+    }
+
+}

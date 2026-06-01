@@ -35,3 +35,66 @@
 
     color:#4b5563;
 }
+
+/* =====================================
+   TABLET VIEW
+   768px - 1024px
+   ===================================== */
+
+@media (max-width:1024px){
+
+    .profile-container{
+        padding:30px;
+    }
+
+    .profile-card{
+
+        width:80%;
+
+        max-width:500px;
+
+        padding:30px;
+    }
+
+    .profile-card p{
+
+        font-size:17px;
+    }
+
+}
+
+
+/* =====================================
+   MOBILE VIEW
+   Below 768px
+   ===================================== */
+
+@media (max-width:768px){
+
+    .profile-container{
+        padding:15px;
+    }
+
+    .profile-card{
+
+        width:100%;
+
+        max-width:100%;
+
+        padding:20px;
+
+        box-sizing:border-box;
+
+        border-radius:18px;
+    }
+
+    .profile-card p{
+
+        font-size:15px;
+
+        margin-bottom:14px;
+
+        word-break:break-word;
+    }
+
+}

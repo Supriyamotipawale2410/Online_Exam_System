@@ -48,3 +48,84 @@
 .upload-btn:hover{
     background:#1d4ed8;
 }
+
+/* =====================================
+   TABLET VIEW
+   768px - 1024px
+   ===================================== */
+
+@media (max-width:1024px){
+
+    .upload-container{
+        padding:25px;
+    }
+
+    .upload-card{
+
+        width:80%;
+
+        max-width:500px;
+
+        padding:35px;
+    }
+
+    .upload-title{
+
+        font-size:30px;
+    }
+
+}
+
+
+/* =====================================
+   MOBILE VIEW
+   Below 768px
+   ===================================== */
+
+@media (max-width:768px){
+
+    .upload-container{
+
+        padding:15px;
+    }
+
+    .upload-card{
+
+        width:100%;
+
+        max-width:400px;
+
+        padding:25px;
+
+        border-radius:12px;
+    }
+
+    .upload-title{
+
+        font-size:24px;
+
+        margin-bottom:20px;
+    }
+
+    .upload-input{
+
+        padding:12px;
+
+        font-size:14px;
+    }
+
+    .upload-file{
+
+        font-size:14px;
+    }
+
+    .upload-btn{
+
+        width:100%;
+
+        padding:12px;
+
+        font-size:15px;
+    }
+
+}

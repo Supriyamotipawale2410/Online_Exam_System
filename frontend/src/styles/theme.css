@@ -345,3 +345,189 @@ tbody tr:hover{
     box-shadow:
         0 8px 32px rgba(0,0,0,0.08);
 }
+
+/* =====================================
+   TABLET VIEW
+   768px - 1024px
+   ===================================== */
+
+@media (max-width:1024px){
+
+    .page-container{
+        padding:25px;
+    }
+
+    h1{
+        font-size:32px;
+    }
+
+    h2{
+        font-size:24px;
+    }
+
+    .navbar{
+        padding:0 20px;
+    }
+
+    .nav-links{
+        gap:15px;
+    }
+
+    .student-login-card{
+
+        width:85%;
+
+        max-width:450px;
+    }
+
+    .grid,
+    .subject-grid,
+    .papers-grid,
+    .upload-options-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    th,
+    td{
+        padding:12px;
+        font-size:14px;
+    }
+}
+
+
+/* =====================================
+   MOBILE VIEW
+   Below 768px
+   ===================================== */
+
+@media (max-width:768px){
+
+    .page-container{
+        padding:15px;
+    }
+
+    h1{
+        font-size:26px;
+    }
+
+    h2{
+        font-size:20px;
+    }
+
+    p{
+        font-size:14px;
+    }
+
+    /* NAVBAR */
+
+    .navbar{
+
+        height:auto;
+
+        padding:15px;
+
+        flex-direction:column;
+
+        gap:12px;
+
+        text-align:center;
+    }
+
+    .nav-links{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:12px;
+    }
+
+    .nav-links a{
+
+        font-size:14px;
+    }
+
+    /* CARDS */
+
+    .card,
+    .dashboard-card,
+    .subject-card,
+    .paper-card,
+    .upload-card,
+    .upload-students-card{
+
+        padding:18px;
+
+        border-radius:18px;
+    }
+
+    /* LOGIN */
+
+    .student-login-card{
+
+        width:100%;
+
+        max-width:380px;
+
+        padding:25px;
+    }
+
+    /* INPUTS */
+
+    input,
+    select{
+
+        padding:12px;
+
+        font-size:14px;
+    }
+
+    /* BUTTONS */
+
+    .primary-btn,
+    .start-btn,
+    .upload-btn,
+    .upload-students-btn,
+    .download-btn{
+
+        width:100%;
+
+        padding:12px;
+
+        font-size:14px;
+    }
+
+    /* TABLE */
+
+    table{
+
+        display:block;
+
+        overflow-x:auto;
+
+        white-space:nowrap;
+    }
+
+    th,
+    td{
+
+        padding:10px;
+
+        font-size:13px;
+    }
+
+    /* GRID */
+
+    .grid,
+    .subject-grid,
+    .papers-grid,
+    .upload-options-grid{
+
+        grid-template-columns:1fr;
+
+        gap:15px;
+    }
+
+}

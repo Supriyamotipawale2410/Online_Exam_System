@@ -5,9 +5,22 @@ import '../styles/studentdashboard.css';
 function StudentDashboard() {
 
     const navigate = useNavigate();
-
+    const [stats, setStats] = useState({});
     const studentName =
         localStorage.getItem('student_name');
+
+        useEffect(() => {
+
+    axios.get(
+        `http://127.0.0.1:5000/student/dashboard/${localStorage.getItem('student_id')}`
+    )
+    .then((response) => {
+
+        setStats(response.data);
+
+    });
+
+}, []);
 
     return (
 

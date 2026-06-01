@@ -207,3 +207,106 @@
     }
 
 }
+
+/* =====================================
+   TABLET VIEW
+   768px - 1024px
+   ===================================== */
+
+@media (max-width:1024px){
+
+    .exam-container{
+        padding:30px;
+    }
+
+    .exam-title{
+        font-size:34px;
+        text-align:center;
+    }
+
+    .exam-timer{
+        font-size:18px;
+        padding:12px 20px;
+    }
+
+    .question-card{
+        width:95%;
+        padding:18px;
+    }
+
+    .question-title{
+        font-size:17px;
+    }
+
+    .option-box{
+        font-size:14px;
+        padding:10px 12px;
+    }
+
+    .submit-btn{
+        font-size:17px;
+        padding:14px 28px;
+    }
+
+}
+
+
+/* =====================================
+   MOBILE VIEW
+   Below 768px
+   ===================================== */
+
+@media (max-width:768px){
+
+    .exam-container{
+        padding:15px;
+    }
+
+    .exam-title{
+        font-size:28px;
+        text-align:center;
+    }
+
+    .exam-timer{
+        font-size:16px;
+        padding:10px 16px;
+        text-align:center;
+    }
+
+    .question-card{
+        width:100%;
+        padding:15px;
+        margin-bottom:15px;
+    }
+
+    .question-title{
+        font-size:16px;
+        margin-bottom:12px;
+    }
+
+    .option-box{
+
+        display:block;
+
+        width:100%;
+
+        margin:8px 0;
+
+        padding:10px;
+
+        font-size:14px;
+
+        box-sizing:border-box;
+    }
+
+    .option-box input{
+        margin-right:8px;
+    }
+
+    .submit-btn{
+        width:100%;
+        font-size:16px;
+        padding:14px;
+    }
+
+}

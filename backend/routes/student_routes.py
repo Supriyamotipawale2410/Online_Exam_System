@@ -239,7 +239,11 @@ def submit_exam():
     })
 
 
-    @student_bp.route('/my-results/<student_id>', methods=['GET'])
+    # =========================================
+# MY RESULTS
+# =========================================
+
+@student_bp.route('/my-results/<student_id>', methods=['GET'])
 def my_results(student_id):
 
     cursor = mysql.connection.cursor()
@@ -261,14 +265,102 @@ def my_results(student_id):
     for row in rows:
 
         results.append({
-
             "subject_name": row[0],
             "total_questions": row[1],
             "correct_answers": row[2],
             "score": row[3]
-
         })
 
     cursor.close()
 
     return jsonify(results)
+
+
+# =========================================
+# STUDENT DASHBOARD
+# =========================================
+
+@student_bp.route('/dashboard/<student_id>', methods=['GET'])
+def dashboard(student_id):
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("""
+        SELECT COUNT(*)
+        FROM subjects
+    """)
+
+    total_subjects = cursor.fetchone()[0]
+
+    cursor.execute("""
+        SELECT COUNT(*)
+        FROM results
+        WHERE student_id = %s
+    """, (student_id,))
+
+    attempted = cursor.fetchone()[0]
+
+    remaining = total_subjects - attempted
+
+    cursor.execute("""
+        SELECT MAX(score)
+        FROM results
+        WHERE student_id = %s
+    """, (student_id,))
+
+    highest = cursor.fetchone()[0]
+
+    if highest is None:
+        highest = 0
+
+    cursor.close()
+
+    return jsonify({
+        "total_subjects": total_subjects,
+        "attempted": attempted,
+        "remaining": remaining,
+        "highest": highest
+    })
+
+
+# =========================================
+# STUDENT PROFILE
+# =========================================
+
+@student_bp.route('/profile/<student_id>', methods=['GET'])
+def profile(student_id):
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("""
+        SELECT
+            student_id,
+            student_name,
+            email,
+            city,
+            phone,
+            gender
+        FROM students
+        WHERE student_id = %s
+    """, (student_id,))
+
+    row = cursor.fetchone()
+
+    cursor.close()
+
+    if not row:
+
+        return jsonify({
+            "message": "Student not found"
+        }), 404
+
+    return jsonify({
+        "student_id": row[0],
+        "student_name": row[1],
+        "email": row[2],
+        "city": row[3],
+        "phone": row[4],
+        "gender": row[5]
+    })
+
+    
