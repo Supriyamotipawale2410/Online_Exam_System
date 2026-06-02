@@ -18,7 +18,7 @@ function UploadPage() {
         try {
 
             const res = await axios.post(
-                "http://127.0.0.1:5000/admin/upload-paper",
+                "http://https://online-exam-system-00a8.onrender.com/admin/upload-paper",
                 formData
             );
 

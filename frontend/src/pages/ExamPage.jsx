@@ -19,7 +19,10 @@ function ExamPage() {
 
   useEffect(() => {
 
-    axios.get(`http://127.0.0.1:5000/student/questions/${subject_id}`)
+    axios.get(`http://
+    
+    
+      }`)
       .then((response) => {
 
         setQuestions(response.data);
@@ -81,7 +84,7 @@ useEffect(() => {
 };
 
     axios.post(
-      'http://127.0.0.1:5000/student/submit',
+      'http://https://online-exam-system-00a8.onrender.com/student/submit',
       payload
     )
     .then((response) => {

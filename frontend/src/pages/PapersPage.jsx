@@ -15,7 +15,7 @@ function PapersPage() {
 
     const fetchSubjects = () => {
 
-        axios.get('http://127.0.0.1:5000/admin/all-subjects')
+        axios.get('http://https://online-exam-system-00a8.onrender.com/admin/all-subjects')
         .then((response) => {
 
             setSubjects(response.data);
@@ -27,7 +27,7 @@ function PapersPage() {
     const deletePaper = (id) => {
 
         axios.delete(
-            `http://127.0.0.1:5000/admin/delete-subject/${id}`
+            `http://https://online-exam-system-00a8.onrender.com/admin/delete-subject/${id}`
         )
         .then(() => {
 

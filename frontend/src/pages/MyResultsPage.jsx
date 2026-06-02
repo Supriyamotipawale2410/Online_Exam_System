@@ -13,7 +13,7 @@ function MyResultsPage() {
     useEffect(() => {
 
         axios.get(
-            `http://127.0.0.1:5000/student/my-results/${studentId}`
+            `http://https://online-exam-system-00a8.onrender.com/student/my-results/${studentId}`
         )
         .then((response) => {
 

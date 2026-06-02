@@ -30,7 +30,7 @@ function LoginPage() {
         }
         else {
 
-            fetch('http://127.0.0.1:5000/student/login', {
+            fetch('http://https://online-exam-system-00a8.onrender.com/student/login', {
 
                 method:'POST',
 

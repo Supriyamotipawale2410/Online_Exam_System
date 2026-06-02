@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import '../styles/studentdashboard.css';
@@ -12,7 +14,7 @@ function StudentDashboard() {
         useEffect(() => {
 
     axios.get(
-        `http://127.0.0.1:5000/student/dashboard/${localStorage.getItem('student_id')}`
+        `http://https://online-exam-system-00a8.onrender.com/student/dashboard/${localStorage.getItem('student_id')}`
     )
     .then((response) => {
 
