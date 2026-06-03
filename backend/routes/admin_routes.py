@@ -270,9 +270,12 @@ def all_subjects():
     for row in rows:
 
         subjects.append({
-            "id": row[0],
-            "subject_name": row[1]
-        })
+    "id": row[0],
+    "subject_name": row[1],
+    "duration_minutes": row[2],
+    "total_questions": row[3],
+    "passing_marks": row[4]
+})
 
     cursor.close()
 

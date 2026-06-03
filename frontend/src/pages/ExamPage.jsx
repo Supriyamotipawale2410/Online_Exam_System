@@ -12,8 +12,9 @@ function ExamPage() {
 
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
-  const [timeLeft, setTimeLeft] = useState(60);
-
+const [timeLeft, setTimeLeft] = useState(
+    Number(localStorage.getItem("duration")) * 60
+);
   const studentId = localStorage.getItem('student_id');
   const studentName = localStorage.getItem('student_name');
 

@@ -106,11 +106,11 @@ function SubjectPage() {
                                     
                                     <div className="subject-info">
 
-                                        <p>🕒 60 Minutes</p>
+                                        <p>🕒 {subject.duration_minutes} Minutes</p>
 
-                                        <p>❓ 20 Questions</p>
+                                        <p>❓ {subject.total_questions} Questions</p>
 
-                                        <p>🎯 Passing: 40%</p>
+                                        <p>🎯 Passing: {subject.passing_marks}%</p>
 
                                     </div>
 
