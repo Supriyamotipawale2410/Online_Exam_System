@@ -36,6 +36,7 @@ function ExamPage() {
 
 }, [subject_id]);
 
+// eslint-disable-next-line react-hooks/exhaustive-deps
 useEffect(() => {
 
     if (timeLeft <= 0) {
@@ -54,7 +55,7 @@ useEffect(() => {
 
     return () => clearInterval(timer);
 
-}, [timeLeft, submitExam]);
+}, [timeLeft]);
 
   const handleAnswer = (questionId, option) => {
 

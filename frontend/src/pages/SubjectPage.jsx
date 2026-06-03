@@ -14,13 +14,14 @@ function SubjectPage() {
     const student_id = localStorage.getItem("student_id");
     const student_name = localStorage.getItem("student_name");
 
-    useEffect(() => {
+// eslint-disable-next-line react-hooks/exhaustive-deps
+        useEffect(() => {
 
-        fetchSubjects();
+            fetchSubjects();
 
-        fetchAttemptedSubjects();
+            fetchAttemptedSubjects();
 
-    }, [student_id]);
+        }, []);
 
     const fetchSubjects = () => {
 
