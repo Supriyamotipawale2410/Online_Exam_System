@@ -12,7 +12,7 @@ function ResultsPage() {
 
     useEffect(() => {
 
-        axios.get('http://https://online-exam-system-00a8.onrender.com/admin/results')
+        axios.get('https://online-exam-system-00a8.onrender.com/admin/results')
         .then((response) => {
 
             setResults(response.data);
@@ -140,7 +140,7 @@ function ResultsPage() {
 
                     </select>
 
-                    <a href="http://https://online-exam-system-00a8.onrender.com/admin/download-results">
+                    <a href="https://online-exam-system-00a8.onrender.com/admin/download-results">
 
                         <button className="download-btn">
                             <h3>⬇ Download </h3>

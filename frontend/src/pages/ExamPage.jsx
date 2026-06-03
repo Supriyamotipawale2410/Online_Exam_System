@@ -84,7 +84,7 @@ useEffect(() => {
 };
 
     axios.post(
-      'http://https://online-exam-system-00a8.onrender.com/student/submit',
+      'https://online-exam-system-00a8.onrender.com/student/submit',
       payload
     )
     .then((response) => {

@@ -30,7 +30,7 @@ function LoginPage() {
         }
         else {
 
-            fetch('http://https://online-exam-system-00a8.onrender.com/student/login', {
+            fetch('https://online-exam-system-00a8.onrender.com/student/login', {
 
                 method:'POST',
 

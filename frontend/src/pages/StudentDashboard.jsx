@@ -9,11 +9,11 @@ function StudentDashboard() {
     const navigate = useNavigate();
 
     const [stats, setStats] = useState({
-        total_subjects: 0,
-        attempted_subjects: 0,
-        remaining_subjects: 0,
-        highest_score: 0
-    });
+    total_subjects: 0,
+    attempted: 0,
+    remaining: 0,
+    highest: 0
+});
 
     const studentName =
         localStorage.getItem('student_name');
@@ -58,17 +58,17 @@ function StudentDashboard() {
                     </div>
 
                     <div className="stats-card">
-                        <h2>✅ {stats.attempted_subjects}</h2>
+                        <h2>✅ {stats.attempted}</h2>
                         <p>Attempted</p>
                     </div>
 
                     <div className="stats-card">
-                        <h2>📝 {stats.remaining_subjects}</h2>
+                        <h2>📝 {stats.remaining}</h2>
                         <p>Remaining</p>
                     </div>
 
                     <div className="stats-card">
-                        <h2>🏆 {stats.highest_score}</h2>
+                        <h2>🏆 {stats.highest}</h2>
                         <p>Highest Score</p>
                     </div>
 

@@ -24,7 +24,7 @@ function SubjectPage() {
 
     const fetchSubjects = () => {
 
-        axios.get("http://https://online-exam-system-00a8.onrender.com/student/subjects")
+        axios.get("https://online-exam-system-00a8.onrender.com/student/subjects")
         .then((res) => {
 
             setSubjects(res.data);
@@ -41,7 +41,7 @@ function SubjectPage() {
     const fetchAttemptedSubjects = () => {
 
         axios.get(
-            `http://https://online-exam-system-00a8.onrender.com/student/attempted-subjects/${student_id}`
+            `https://online-exam-system-00a8.onrender.com/student/attempted-subjects/${student_id}`
         )
         .then((res) => {
 

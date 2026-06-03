@@ -27,7 +27,7 @@ function StudentsPage() {
 
     const fetchStudents = () => {
 
-        axios.get('http://https://online-exam-system-00a8.onrender.com/admin/students')
+        axios.get('https://online-exam-system-00a8.onrender.com/admin/students')
         .then((response) => {
 
             setStudents(response.data);
@@ -39,7 +39,7 @@ function StudentsPage() {
     const deleteStudent = (id) => {
 
         axios.delete(
-            `http://https://online-exam-system-00a8.onrender.com/admin/delete-student/${id}`
+            `https://online-exam-system-00a8.onrender.com/admin/delete-student/${id}`
         )
         .then(() => {
 
@@ -71,7 +71,7 @@ function StudentsPage() {
 
         axios.put(
 
-            `http://https://online-exam-system-00a8.onrender.com/admin/update-student/${id}`,
+            `https://online-exam-system-00a8.onrender.com/admin/update-student/${id}`,
 
             formData
 
@@ -110,7 +110,7 @@ function StudentsPage() {
                         Student Management
                     </h1>
 
-                    <a href="http://https://online-exam-system-00a8.onrender.com/admin/download-students">
+                    <a href="https://online-exam-system-00a8.onrender.com/admin/download-students">
 
                         <button className="download-btn">
                             Download Excel

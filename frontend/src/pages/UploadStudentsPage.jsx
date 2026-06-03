@@ -22,7 +22,7 @@ function UploadStudentsPage() {
         formData.append('file', file);
 
         axios.post(
-            'http://https://online-exam-system-00a8.onrender.com/admin/upload-students',
+            'https://online-exam-system-00a8.onrender.com/admin/upload-students',
             formData
         )
         .then((response) => {

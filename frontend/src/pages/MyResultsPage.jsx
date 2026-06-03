@@ -13,7 +13,7 @@ function MyResultsPage() {
     useEffect(() => {
 
         axios.get(
-            `http://https://online-exam-system-00a8.onrender.com/student/my-results/${studentId}`
+            `https://online-exam-system-00a8.onrender.com/student/my-results/${studentId}`
         )
         .then((response) => {
 
