@@ -17,11 +17,23 @@ function SubjectPage() {
 // eslint-disable-next-line react-hooks/exhaustive-deps
         useEffect(() => {
 
-            fetchSubjects();
+    fetchSubjects();
 
-            fetchAttemptedSubjects();
+    axios.get(
+        `https://online-exam-system-00a8.onrender.com/student/attempted-subjects/${student_id}`
+    )
+    .then((res) => {
 
-        }, []);
+        setAttemptedSubjects(res.data);
+
+    })
+    .catch((err) => {
+
+        console.log(err);
+
+    });
+
+}, [student_id]);
 
     const fetchSubjects = () => {
 
@@ -39,23 +51,7 @@ function SubjectPage() {
 
     };
 
-    const fetchAttemptedSubjects = () => {
-
-        axios.get(
-            `https://online-exam-system-00a8.onrender.com/student/attempted-subjects/${student_id}`
-        )
-        .then((res) => {
-
-            setAttemptedSubjects(res.data);
-
-        })
-        .catch((err) => {
-
-            console.log(err);
-
-        });
-
-    };
+    
 
     const selectSubject = (subject_id, subject_name) => {
 

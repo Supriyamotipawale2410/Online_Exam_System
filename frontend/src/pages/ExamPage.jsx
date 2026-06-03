@@ -19,10 +19,9 @@ function ExamPage() {
 
   useEffect(() => {
 
-    axios.get(`http://
-    
-    
-      }`)
+    axios.get(
+    `https://online-exam-system-00a8.onrender.com/student/questions/${subject_id}`
+    )
       .then((response) => {
 
         setQuestions(response.data);
@@ -41,8 +40,7 @@ useEffect(() => {
 
     if (timeLeft <= 0) {
 
-        submitExam();
-
+        alert("Time Up!");
         return;
 
     }
