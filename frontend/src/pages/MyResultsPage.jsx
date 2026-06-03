@@ -21,7 +21,7 @@ function MyResultsPage() {
 
         });
 
-    }, []);
+    }, [studentId]);
 
     return (
 

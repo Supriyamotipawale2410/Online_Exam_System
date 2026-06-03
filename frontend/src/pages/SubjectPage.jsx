@@ -20,7 +20,7 @@ function SubjectPage() {
 
         fetchAttemptedSubjects();
 
-    }, []);
+    }, [student_id]);
 
     const fetchSubjects = () => {
 

@@ -54,7 +54,7 @@ useEffect(() => {
 
     return () => clearInterval(timer);
 
-}, [timeLeft]);
+}, [timeLeft, submitExam]);
 
   const handleAnswer = (questionId, option) => {
 
