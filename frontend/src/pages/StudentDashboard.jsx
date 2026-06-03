@@ -7,27 +7,41 @@ import '../styles/studentdashboard.css';
 function StudentDashboard() {
 
     const navigate = useNavigate();
-    const [stats, setStats] = useState({});
+
+    const [stats, setStats] = useState({
+        total_subjects: 0,
+        attempted_subjects: 0,
+        remaining_subjects: 0,
+        highest_score: 0
+    });
+
     const studentName =
         localStorage.getItem('student_name');
 
-        useEffect(() => {
+    const studentId =
+        localStorage.getItem('student_id');
 
-    axios.get(
-        `http://https://online-exam-system-00a8.onrender.com/student/dashboard/${localStorage.getItem('student_id')}`
-    )
-    .then((response) => {
+    useEffect(() => {
 
-        setStats(response.data);
+        axios.get(
+            `https://online-exam-system-00a8.onrender.com/student/dashboard/${studentId}`
+        )
+        .then((response) => {
 
-    });
+            setStats(response.data);
 
-}, []);
+        })
+        .catch((error) => {
+
+            console.log(error);
+
+        });
+
+    }, [studentId]);
 
     return (
 
         <>
-
             <Navbar />
 
             <div className="dashboard-container">
@@ -39,22 +53,22 @@ function StudentDashboard() {
                 <div className="stats-container">
 
                     <div className="stats-card">
-                        <h2>📚 5</h2>
+                        <h2>📚 {stats.total_subjects}</h2>
                         <p>Total Subjects</p>
                     </div>
 
                     <div className="stats-card">
-                        <h2>✅ 2</h2>
+                        <h2>✅ {stats.attempted_subjects}</h2>
                         <p>Attempted</p>
                     </div>
 
                     <div className="stats-card">
-                        <h2>📝 3</h2>
+                        <h2>📝 {stats.remaining_subjects}</h2>
                         <p>Remaining</p>
                     </div>
 
                     <div className="stats-card">
-                        <h2>🏆 18</h2>
+                        <h2>🏆 {stats.highest_score}</h2>
                         <p>Highest Score</p>
                     </div>
 
@@ -88,9 +102,7 @@ function StudentDashboard() {
             </div>
 
         </>
-
     );
-
 }
 
 export default StudentDashboard;
