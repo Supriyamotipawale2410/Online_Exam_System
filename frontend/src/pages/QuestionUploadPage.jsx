@@ -66,7 +66,20 @@ function UploadPage() {
                         onChange={(e) => setFile(e.target.files[0])}
                         className="upload-file"
                     />
+                    <input
+                        type="number"
+                        placeholder="Duration (Minutes)"
+                    />
 
+                    <input
+                        type="number"
+                        placeholder="Total Questions"
+                    />
+
+                    <input
+                        type="number"
+                        placeholder="Passing Percentage"
+/>
                     <button
                         onClick={uploadPaper}
                         className="upload-btn"
