@@ -57,7 +57,7 @@ function AdminDashboard() {
                     </Link>
 
                     <Link
-                        to="/upload"
+                        to="/upload-questions"
                         className="dashboard-link"
                     >
 
