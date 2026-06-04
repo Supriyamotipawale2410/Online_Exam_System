@@ -21,7 +21,7 @@ function Navbar() {
 
             <div className="logo">
 
-                🎓 Online Exam System
+                Online Exam System
 
             </div>
 
@@ -32,11 +32,11 @@ function Navbar() {
 
                         <>
 
-                            <Link to="/admin-dashboard">🏠 Dashboard</Link>
-                            <Link to="/upload">📤 Upload</Link>
-                            <Link to="/students">👨‍🎓 Students</Link>
-                            <Link to="/papers">📄 Papers</Link>
-                            <Link to="/results">📊 Results</Link>
+                            <Link to="/admin-dashboard">Dashboard</Link>
+                            <Link to="/upload">Upload</Link>
+                            <Link to="/students">Students</Link>
+                            <Link to="/papers">Papers</Link>
+                            <Link to="/results">Results</Link>
 
                         </>
 
@@ -45,19 +45,19 @@ function Navbar() {
                         <>
 
                             <Link to="/student-dashboard">
-                                🏠 Dashboard
+                                Dashboard
                             </Link>
 
                             <Link to="/subjects">
-                                📘 Subjects
+                                Subjects
                             </Link>
 
                             <Link to="/my-results">
-                                📊 My Results
+                                My Results
                             </Link>
 
                             <Link to="/profile">
-                                👤 Profile
+                                Profile
                             </Link>
 
                             
@@ -71,7 +71,7 @@ function Navbar() {
                     className="logout-btn"
                     onClick={logout}
                 >
-                    🚪 Logout
+                    Logout
                 </button>
 
             </div>

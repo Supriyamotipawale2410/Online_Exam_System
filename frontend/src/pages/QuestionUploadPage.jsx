@@ -71,7 +71,7 @@ function UploadPage() {
                         onClick={uploadPaper}
                         className="upload-btn"
                     >
-                        Upload Excel ⬆️
+                        Upload Excel
                     </button>
 
                 </div>

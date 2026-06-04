@@ -108,9 +108,9 @@ useEffect(() => {
 
     <div className="exam-container">
 
-      <h1 className="exam-title">🧠 Exam Page</h1>
+      <h1 className="exam-title">Exam Page</h1>
       <h2 className="exam-timer">
-      ⏳ Time Left: {timeLeft} Seconds
+      Time Left: {timeLeft} Seconds
       </h2>
 
       {
@@ -122,7 +122,7 @@ useEffect(() => {
           >
 
             <h3 className="question-title">
-              📄 {q.question}
+              {q.question}
             </h3>
 
             <div className="option-box">
@@ -170,7 +170,7 @@ useEffect(() => {
         className="submit-btn"
         onClick={submitExam}
       >
-        🚀 Submit Exam 
+        Submit Exam 
       </button>
 
     </div>

@@ -76,7 +76,7 @@ function SubjectPage() {
                     </h1>
 
                     <p className="subject-subtitle">
-                       📘 Select a subject to start your exam
+                       Select a subject to start your exam
                     </p>
 
                 </div>
@@ -106,11 +106,11 @@ function SubjectPage() {
                                     
                                     <div className="subject-info">
 
-                                        <p>🕒 {subject.duration_minutes} Minutes</p>
+                                        <p>{subject.duration_minutes} Minutes</p>
 
-                                        <p>❓ {subject.total_questions} Questions</p>
+                                        <p>{subject.total_questions} Questions</p>
 
-                                        <p>🎯 Passing: {subject.passing_marks}%</p>
+                                        <p>Passing: {subject.passing_marks}%</p>
 
                                     </div>
 
@@ -121,7 +121,7 @@ function SubjectPage() {
                                                 disabled
                                                 className="attempted-btn"
                                             >
-                                                Attempted ✅
+                                                Attempted
                                             </button>
 
                                         ) : (
@@ -135,7 +135,7 @@ function SubjectPage() {
                                                     )
                                                 }
                                             >
-                                               📝 Start Exam
+                                               Start Exam
                                             </button>
 
                                         )

@@ -143,7 +143,7 @@ function ResultsPage() {
                     <a href="https://online-exam-system-00a8.onrender.com/admin/download-results">
 
                         <button className="download-btn">
-                            <h3>⬇ Download </h3>
+                            <h3>Download </h3>
                             <p>You can download Excel of all Students Result Record here</p>
                         </button>
 

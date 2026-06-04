@@ -31,7 +31,7 @@ function MyResultsPage() {
 
             <div className="results-container">
 
-                <h1>📊 My Results</h1>
+                <h1>My Results</h1>
 
                 <table className="results-table">
 

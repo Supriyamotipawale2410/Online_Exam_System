@@ -80,7 +80,7 @@ function LoginPage() {
             <div className="login-card">
 
                 <h1 className="login-title">
-                    🎓 Online Exam System
+                    Online Exam System
                 </h1>
 
                 <select
@@ -90,11 +90,11 @@ function LoginPage() {
                 >
 
                     <option value="student">
-                       👨‍🎓 Student
+                       Student
                     </option>
 
                     <option value="admin">
-                        👨Admin
+                        Admin
                     </option>
 
                 </select>

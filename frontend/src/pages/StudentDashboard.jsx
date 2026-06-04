@@ -63,12 +63,12 @@ function StudentDashboard() {
                     </div>
 
                     <div className="stats-card">
-                        <h2>📝 {stats.remaining}</h2>
+                        <h2>{stats.remaining}</h2>
                         <p>Remaining</p>
                     </div>
 
                     <div className="stats-card">
-                        <h2>🏆 {stats.highest}</h2>
+                        <h2>{stats.highest}</h2>
                         <p>Highest Score</p>
                     </div>
 
@@ -80,21 +80,21 @@ function StudentDashboard() {
                         className="action-card"
                         onClick={() => navigate('/subjects')}
                     >
-                        📘 Subjects
+                        Subjects
                     </div>
 
                     <div
                         className="action-card"
                         onClick={() => navigate('/my-results')}
                     >
-                        📊 My Results
+                        My Results
                     </div>
 
                     <div
                         className="action-card"
                         onClick={() => navigate('/profile')}
                     >
-                        👤 Profile
+                        Profile
                     </div>
 
                 </div>

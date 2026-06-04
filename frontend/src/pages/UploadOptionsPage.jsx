@@ -30,7 +30,7 @@ function UploadOptionsPage() {
                     >
 
                         <div className="upload-icon">
-                            📄
+                        
                         </div>
 
                         <h2>
@@ -49,7 +49,7 @@ function UploadOptionsPage() {
                     >
 
                         <div className="upload-icon">
-                            👨‍🎓
+                            
                         </div>
 
                         <h2>

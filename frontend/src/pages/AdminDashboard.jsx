@@ -13,7 +13,7 @@ function AdminDashboard() {
             <div className="admin-dashboard-container">
 
                 <h1 className="admin-dashboard-title">
-                    🛡️ Admin Dashboard
+                    Admin Dashboard
                 </h1>
 
                 <p className="admin-dashboard-subtitle">
@@ -28,8 +28,6 @@ function AdminDashboard() {
                     >
 
                         <div className="dashboard-box pastel-pink">
-
-                            <h2>👨‍🎓</h2>
 
                             <h3>Upload Students Data</h3>
 
@@ -48,8 +46,6 @@ function AdminDashboard() {
 
                         <div className="dashboard-box pastel-purple">
 
-                            <h2>📋</h2>
-
                             <h3>Manage Students Data</h3>
 
                             <p>
@@ -67,8 +63,6 @@ function AdminDashboard() {
 
                         <div className="dashboard-box pastel-blue">
 
-                            <h2>📚</h2>
-
                             <h3>Upload Question Paper</h3>
 
                             <p>
@@ -85,8 +79,6 @@ function AdminDashboard() {
                     >
 
                         <div className="dashboard-box pastel-green">
-
-                            <h2>📊</h2>
 
                             <h3>View Results</h3>
 

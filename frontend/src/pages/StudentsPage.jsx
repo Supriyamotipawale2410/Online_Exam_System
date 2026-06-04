@@ -119,7 +119,7 @@ function StudentsPage() {
                     </a>
 
                 </div>
-                🔍
+        
                 <input
                     
                     type="text"
@@ -301,7 +301,7 @@ function StudentsPage() {
                                                         className="edit-btn"
                                                         onClick={() => editStudent(student)}
                                                     >
-                                                        Edit ✏️
+                                                        Edit
                                                     </button>
 
                                                 )
@@ -311,7 +311,7 @@ function StudentsPage() {
                                                 className="delete-btn"
                                                 onClick={() => deleteStudent(student.id)}
                                             >
-                                                Delete 🗑️
+                                                Delete
                                             </button>
 
                                         </td>

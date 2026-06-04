@@ -48,7 +48,7 @@ function PapersPage() {
             <div className="page-container">
 
                 <h1 className="page-title">
-                    Question Papers 📄
+                    Question Papers
                 </h1>
 
                 <div className="papers-grid">
@@ -69,7 +69,7 @@ function PapersPage() {
                                     className="delete-btn"
                                     onClick={() => deletePaper(subject.id)}
                                 >
-                                    Delete Paper 📄
+                                    Delete Paper
                                 </button>
 
                             </div>

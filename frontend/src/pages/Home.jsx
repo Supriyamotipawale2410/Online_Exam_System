@@ -10,7 +10,7 @@ function Home() {
 
     <div style={{ textAlign: 'center', marginTop: '100px' }}>
 
-      <h6>🎓 Online Exam System</h6>
+      <h6>Online Exam System</h6>
 
       <button
         onClick={() => navigate('/admin-login')}
