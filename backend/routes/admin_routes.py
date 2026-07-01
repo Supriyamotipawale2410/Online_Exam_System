@@ -343,36 +343,70 @@ def upload_paper():
 
     # READ EXCEL
     df = pd.read_excel(filepath)
+
     total_questions = len(df)
 
     cursor = mysql.connection.cursor()
 
     # INSERT SUBJECT
+
     cursor.execute("""
-        cursor.execute("""
         INSERT INTO subjects
         (
-        subject_name,
-        duration_minutes,
-        total_questions,
-        passing_marks
+            subject_name,
+            duration_minutes,
+            total_questions,
+            passing_marks
         )
-
         VALUES(%s,%s,%s,%s)
-        """,
-
-        (
+    """,
+    (
         subject_name,
         duration,
         total_questions,
         passing_marks
-        ))
-        """, (subject_name,))
+    ))
 
     mysql.connection.commit()
 
     subject_id = cursor.lastrowid
 
+    # INSERT QUESTIONS
+
+    for index, row in df.iterrows():
+
+        cursor.execute("""
+            INSERT INTO questions
+            (
+                subject_id,
+                question,
+                option1,
+                option2,
+                option3,
+                option4,
+                correct_answer
+            )
+            VALUES(%s,%s,%s,%s,%s,%s,%s)
+        """,
+        (
+            subject_id,
+            row['question'],
+            row['option1'],
+            row['option2'],
+            row['option3'],
+            row['option4'],
+            row['correct_answer']
+        ))
+
+    mysql.connection.commit()
+
+    cursor.close()
+
+    return jsonify({
+
+        "message": "Excel Question Paper Uploaded Successfully"
+
+    })
     # INSERT QUESTIONS
     # INSERT SUBJECT
 
