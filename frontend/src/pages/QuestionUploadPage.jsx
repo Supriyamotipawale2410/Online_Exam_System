@@ -4,16 +4,21 @@ import Navbar from '../components/Navbar';
 import '../styles/upload.css';
 
 function UploadPage() {
-
     const [subject_name, setSubjectName] = useState('');
+    const [duration, setDuration] = useState('');
+    const [passingMarks, setPassingMarks] = useState('');
     const [file, setFile] = useState(null);
 
     const uploadPaper = async () => {
 
         const formData = new FormData();
+            formData.append("subject_name", subject_name);
 
-        formData.append("subject_name", subject_name);
-        formData.append("file", file);
+            formData.append("duration", duration);
+
+            formData.append("passing_marks", passingMarks);
+
+            formData.append("file", file);
 
         try {
 
@@ -66,20 +71,23 @@ function UploadPage() {
                         onChange={(e) => setFile(e.target.files[0])}
                         className="upload-file"
                     />
-                    <input
-                        type="number"
-                        placeholder="Duration (Minutes)"
-                    />
 
                     <input
                         type="number"
-                        placeholder="Total Questions"
+                        placeholder="Duration (Minutes)"
+                        value={duration}
+                        onChange={(e)=>setDuration(e.target.value)}
+                        className="upload-input"
                     />
 
                     <input
                         type="number"
                         placeholder="Passing Percentage"
-/>
+                        value={passingMarks}
+                        onChange={(e)=>setPassingMarks(e.target.value)}
+                        className="upload-input"
+                    />
+
                     <button
                         onClick={uploadPaper}
                         className="upload-btn"

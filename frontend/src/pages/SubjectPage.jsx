@@ -53,13 +53,27 @@ function SubjectPage() {
 
     
 
-    const selectSubject = (subject_id, subject_name) => {
+    const selectSubject = (subject) => {
 
-        localStorage.setItem('subject_name', subject_name);
+    localStorage.setItem("subject_name", subject.subject_name);
 
-        navigate(`/exam/${subject_id}`);
+    localStorage.setItem(
+        "duration_minutes",
+        subject.duration_minutes
+    );
 
-    };
+    localStorage.setItem(
+        "total_questions",
+        subject.total_questions
+    );
+
+    localStorage.setItem(
+        "passing_marks",
+        subject.passing_marks
+    );
+
+    navigate(`/exam/${subject.id}`);
+};
 
     return (
 
@@ -110,8 +124,7 @@ function SubjectPage() {
 
                                         <p>{subject.total_questions} Questions</p>
 
-                                        <p>Passing: {subject.passing_marks}%</p>
-
+                                        <p> Passing: {subject.passing_marks}%</p>
                                     </div>
 
                                     {
@@ -128,12 +141,7 @@ function SubjectPage() {
 
                                             <button
                                                 className="start-btn"
-                                                onClick={() =>
-                                                    selectSubject(
-                                                        subject.id,
-                                                        subject.subject_name
-                                                    )
-                                                }
+                                                onClick={() => selectSubject(subject)}
                                             >
                                                Start Exam
                                             </button>

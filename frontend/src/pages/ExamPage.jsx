@@ -12,8 +12,11 @@ function ExamPage() {
 
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
+  const [submitted, setSubmitted] = useState(false);
 const [timeLeft, setTimeLeft] = useState(
-    Number(localStorage.getItem("duration")) * 60
+
+    Number(localStorage.getItem("duration_minutes")) * 60
+
 );
   const studentId = localStorage.getItem('student_id');
   const studentName = localStorage.getItem('student_name');
@@ -36,19 +39,25 @@ const [timeLeft, setTimeLeft] = useState(
 
 }, [subject_id]);
 
-// eslint-disable-next-line react-hooks/exhaustive-deps
 useEffect(() => {
 
     if (timeLeft <= 0) {
 
-        alert("Time Up!");
+        if (!submitted) {
+
+            alert("Time Up!");
+
+            submitExam();
+
+        }
+
         return;
 
     }
 
     const timer = setInterval(() => {
 
-        setTimeLeft((prev) => prev - 1);
+        setTimeLeft(prev => prev - 1);
 
     }, 1000);
 
@@ -58,49 +67,131 @@ useEffect(() => {
 
   const handleAnswer = (questionId, option) => {
 
-    setAnswers({
-      ...answers,
-      [questionId]: option
-    });
+    setAnswers(prev => ({
 
-  };
+        ...prev,
 
-  const submitExam = () => {
+        [questionId]: option
 
-    if (questions.length === 0) return;
-
-  const payload = {
-
-  student_id: studentId,
-
-  student_name: studentName,
-
-  subject_id: subject_id,
-
-  subject_name: localStorage.getItem('subject_name'),
-
-  answers: answers
+    }));
 
 };
 
+ const submitExam = () => {
+
+    if (submitted) {
+
+        return;
+
+    }
+
+    if (questions.length === 0) {
+
+        return;
+
+    }
+
+    if (Object.keys(answers).length === 0) {
+
+        alert("Please answer at least one question.");
+
+        return;
+
+    }
+
+    setSubmitted(true);
+
+    const payload = {
+
+        student_id: studentId,
+
+        student_name: studentName,
+
+        subject_id: subject_id,
+
+        subject_name: localStorage.getItem("subject_name"),
+
+        answers: answers
+
+    };
+
     axios.post(
-      'https://online-exam-system-00a8.onrender.com/student/submit',
-      payload
+
+        "https://online-exam-system-00a8.onrender.com/student/submit",
+
+        payload
+
     )
+
     .then((response) => {
 
-      alert(response.data.message);
-      setQuestions([]);
-      navigate('/subjects');
+        alert(response.data.message);
+
+        setQuestions([]);
+
+        navigate("/subjects");
 
     })
+
     .catch((error) => {
 
-      alert(error.response.data.message);
+        alert(
+
+            error.response?.data?.message ||
+
+            "Submission Failed"
+
+        );
+
+        setSubmitted(false);
 
     });
 
-  };
+};
+
+ const minutes = Math.floor(timeLeft / 60);
+
+const seconds = String(timeLeft % 60).padStart(2,'0');
+
+if (questions.length === 0) {
+
+    return (
+
+        <>
+
+            <Navbar />
+
+            <div className="exam-container">
+
+                <h2>Loading Questions...</h2>
+
+            </div>
+
+        </>
+
+    );
+
+}
+
+if (questions.length === 0) {
+
+    return (
+
+        <>
+
+            <Navbar />
+
+            <div className="exam-container">
+
+                <h2>Loading Questions...</h2>
+
+            </div>
+
+        </>
+
+    );
+
+}
 
   return (
         <>
@@ -109,12 +200,38 @@ useEffect(() => {
     <div className="exam-container">
 
       <h1 className="exam-title">Exam Page</h1>
+      <div className="exam-info">
+
+    <p>
+
+        Subject :
+        {localStorage.getItem("subject_name")}
+
+    </p>
+
+    <p>
+
+        Questions :
+        {localStorage.getItem("total_questions")}
+
+    </p>
+
+    <p>
+
+        Passing :
+        {localStorage.getItem("passing_marks")}%
+
+    </p>
+
+</div>
       <h2 className="exam-timer">
-      Time Left: {timeLeft} Seconds
-      </h2>
+
+    Time Left : {minutes}:{seconds}
+
+    </h2>
 
       {
-        questions.map((q) => (
+        questions.map((q, index) => (
 
           <div
             key={q.id}
@@ -122,15 +239,22 @@ useEffect(() => {
           >
 
             <h3 className="question-title">
+
+              Question {index + 1}
+
+              <br />
+
               {q.question}
-            </h3>
+
+          </h3>
 
             <div className="option-box">
               <input
                 type="radio"
                 name={`question-${q.id}`}
-                onChange={() => handleAnswer(q.id, q.option1)}
-              />
+                checked={answers[q.id]===q.option1}
+                onChange={() => handleAnswer(q.id,q.option1)}
+            />
               {q.option1}
             </div>
 
@@ -138,6 +262,8 @@ useEffect(() => {
               <input
                 type="radio"
                 name={`question-${q.id}`}
+                checked={answers[q.id]===q.option2}
+
                 onChange={() => handleAnswer(q.id, q.option2)}
               />
               {q.option2}
@@ -146,7 +272,9 @@ useEffect(() => {
             <div className="option-box">
               <input
                 type="radio"
-                name={`question-${q.id}`}
+                name={`question-${q.id}`}                                
+                checked={answers[q.id]===q.option3}
+
                 onChange={() => handleAnswer(q.id, q.option3)}
               />
               {q.option3}
@@ -156,6 +284,8 @@ useEffect(() => {
               <input
                 type="radio"
                 name={`question-${q.id}`}
+                checked={answers[q.id]===q.option4}
+
                 onChange={() => handleAnswer(q.id, q.option4)}
               />
               {q.option4}
@@ -166,10 +296,42 @@ useEffect(() => {
         ))
       }
 
+      <div className="exam-progress">
+
+          Answered :
+
+          {Object.keys(answers).length}
+
+          /
+
+          {questions.length}
+
+          (
+
+          {
+
+              questions.length > 0
+
+              ?
+
+              Math.round(
+
+                  (Object.keys(answers).length / questions.length) * 100
+
+              )
+
+              : 0
+
+          }%
+
+          )
+
+      </div>
       <button
-        className="submit-btn"
-        onClick={submitExam}
-      >
+    className="submit-btn"
+    onClick={submitExam}
+    disabled={submitted}
+>
         Submit Exam 
       </button>
 

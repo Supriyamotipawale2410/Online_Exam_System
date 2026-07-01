@@ -74,25 +74,35 @@ def attempted_subjects(student_id):
 # =========================================
 # GET ALL SUBJECTS
 # =========================================
-
 @student_bp.route('/subjects', methods=['GET'])
 def student_subjects():
 
     cursor = mysql.connection.cursor()
 
     cursor.execute("""
-        SELECT * FROM subjects
+        SELECT
+            id,
+            subject_name,
+            duration_minutes,
+            total_questions,
+            passing_marks
+        FROM subjects
     """)
 
-    data = cursor.fetchall()
+    rows = cursor.fetchall()
 
     subjects = []
 
-    for row in data:
+    for row in rows:
 
         subjects.append({
+
             "id": row[0],
-            "subject_name": row[1]
+            "subject_name": row[1],
+            "duration_minutes": row[2],
+            "total_questions": row[3],
+            "passing_marks": row[4]
+
         })
 
     cursor.close()
@@ -200,7 +210,13 @@ def submit_exam():
 
             correct_count += 1
 
-    total_questions = len(answers)
+    cursor.execute("""
+    SELECT total_questions
+    FROM subjects
+    WHERE id=%s
+    """, (subject_id,))
+
+    total_questions = cursor.fetchone()[0]
 
     score = correct_count
 
