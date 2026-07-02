@@ -331,113 +331,93 @@ def delete_subject(id):
 @admin_bp.route('/upload-paper', methods=['POST'])
 def upload_paper():
 
-    subject_name = request.form['subject_name']
-    duration = request.form['duration']
-    passing_marks = request.form['passing_marks']
+    try:
 
-    file = request.files['file']
+        print(request.form)
+        print(request.files)
 
-    filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+        subject_name = request.form['subject_name']
+        duration = request.form['duration']
+        passing_marks = request.form['passing_marks']
 
-    file.save(filepath)
+        file = request.files['file']
 
-    # READ EXCEL
-    df = pd.read_excel(filepath)
+        filepath = os.path.join(UPLOAD_FOLDER, file.filename)
 
-    total_questions = len(df)
+        file.save(filepath)
 
-    cursor = mysql.connection.cursor()
+        # READ EXCEL
+        df = pd.read_excel(filepath)
 
-    # INSERT SUBJECT
+        total_questions = len(df)
 
-    cursor.execute("""
-        INSERT INTO subjects
-        (
-            subject_name,
-            duration_minutes,
-            total_questions,
-            passing_marks
-        )
-        VALUES(%s,%s,%s,%s)
-    """,
-    (
-        subject_name,
-        duration,
-        total_questions,
-        passing_marks
-    ))
+        cursor = mysql.connection.cursor()
 
-    mysql.connection.commit()
-
-    subject_id = cursor.lastrowid
-
-    # INSERT QUESTIONS
-
-    for index, row in df.iterrows():
+        # INSERT SUBJECT
 
         cursor.execute("""
-            INSERT INTO questions
+            INSERT INTO subjects
             (
-                subject_id,
-                question,
-                option1,
-                option2,
-                option3,
-                option4,
-                correct_answer
+                subject_name,
+                duration_minutes,
+                total_questions,
+                passing_marks
             )
-            VALUES(%s,%s,%s,%s,%s,%s,%s)
+            VALUES(%s,%s,%s,%s)
         """,
         (
-            subject_id,
-            row['question'],
-            row['option1'],
-            row['option2'],
-            row['option3'],
-            row['option4'],
-            row['correct_answer']
-        ))
-
-    mysql.connection.commit()
-
-    cursor.close()
-
-    return jsonify({
-
-        "message": "Excel Question Paper Uploaded Successfully"
-
-    })
-    # INSERT QUESTIONS
-    # INSERT SUBJECT
-
-    cursor.execute("""
-        INSERT INTO subjects
-        (
             subject_name,
-            duration_minutes,
+            duration,
             total_questions,
             passing_marks
-        )
-        VALUES(%s,%s,%s,%s)
-    """,
-    (
-        subject_name,
-        duration,
-        total_questions,
-        passing_marks
-    ))
+        ))
 
-    mysql.connection.commit()
+        mysql.connection.commit()
 
-    subject_id = cursor.lastrowid
+        subject_id = cursor.lastrowid
 
-    cursor.close()
+        # INSERT QUESTIONS
 
-    return jsonify({
-        "message":"Excel Question Paper Uploaded Successfully"
-    })
+        for index, row in df.iterrows():
 
+            cursor.execute("""
+                INSERT INTO questions
+                (
+                    subject_id,
+                    question,
+                    option1,
+                    option2,
+                    option3,
+                    option4,
+                    correct_answer
+                )
+                VALUES(%s,%s,%s,%s,%s,%s,%s)
+            """,
+            (
+                subject_id,
+                row['question'],
+                row['option1'],
+                row['option2'],
+                row['option3'],
+                row['option4'],
+                row['correct_answer']
+            ))
 
+        mysql.connection.commit()
+
+        cursor.close()
+
+        return jsonify({
+            "message": "Excel Question Paper Uploaded Successfully"
+        })
+
+    except Exception as e:
+
+        print(e)
+
+        return jsonify({
+            "error": str(e)
+        }), 400
 # VIEW RESULTS
 @admin_bp.route('/results', methods=['GET'])
 def get_results():
