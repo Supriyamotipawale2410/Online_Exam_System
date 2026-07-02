@@ -333,27 +333,46 @@ def upload_paper():
 
     try:
 
-        print(request.form)
-        print(request.files)
+        print("========== UPLOAD START ==========")
+        print("FORM :", request.form)
+        print("FILES :", request.files)
 
-        subject_name = request.form['subject_name']
-        duration = request.form['duration']
-        passing_marks = request.form['passing_marks']
+        subject_name = request.form.get("subject_name")
+        duration = request.form.get("duration")
+        passing_marks = request.form.get("passing_marks")
+        file = request.files.get("file")
 
-        file = request.files['file']
+        # Validate inputs
+
+        if not subject_name:
+            return jsonify({"error": "Subject Name Missing"}), 400
+
+        if not duration:
+            return jsonify({"error": "Duration Missing"}), 400
+
+        if not passing_marks:
+            return jsonify({"error": "Passing Marks Missing"}), 400
+
+        if not file:
+            return jsonify({"error": "Excel File Missing"}), 400
 
         filepath = os.path.join(UPLOAD_FOLDER, file.filename)
 
         file.save(filepath)
 
-        # READ EXCEL
+        print("File Saved Successfully")
+
+        # Read Excel
+
         df = pd.read_excel(filepath)
+
+        print(df.head())
 
         total_questions = len(df)
 
         cursor = mysql.connection.cursor()
 
-        # INSERT SUBJECT
+        # Insert Subject
 
         cursor.execute("""
             INSERT INTO subjects
@@ -376,7 +395,9 @@ def upload_paper():
 
         subject_id = cursor.lastrowid
 
-        # INSERT QUESTIONS
+        print("Subject Inserted :", subject_id)
+
+        # Insert Questions
 
         for index, row in df.iterrows():
 
@@ -395,17 +416,19 @@ def upload_paper():
             """,
             (
                 subject_id,
-                row['question'],
-                row['option1'],
-                row['option2'],
-                row['option3'],
-                row['option4'],
-                row['correct_answer']
+                row["question"],
+                row["option1"],
+                row["option2"],
+                row["option3"],
+                row["option4"],
+                row["correct_answer"]
             ))
 
         mysql.connection.commit()
 
         cursor.close()
+
+        print("Questions Uploaded Successfully")
 
         return jsonify({
             "message": "Excel Question Paper Uploaded Successfully"
@@ -413,7 +436,9 @@ def upload_paper():
 
     except Exception as e:
 
-        print(e)
+        import traceback
+
+        traceback.print_exc()
 
         return jsonify({
             "error": str(e)

@@ -33,13 +33,19 @@ function UploadPage() {
             setFile(null);
 
         }
-        catch(err) {
+        catch(err){
 
-            console.log(err);
+    console.log(err);
 
-            alert("Upload Failed");
+    console.log(err.response);
 
-        }
+    alert(
+        err.response?.data?.error ||
+        err.response?.data?.message ||
+        err.message
+    );
+
+}
 
     };
 
